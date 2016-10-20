@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>初识微信小程序一，了解小程序基础架构 | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="距微信小程序公布已经有一个月的时间了，开发工具也已经放出，尽管内测资格有限，但我们依旧可以通过微信小程序开发工具看到微信小程序大体的模样，本文从一个初学者角度，对微信小程序的基础架构进行探究学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识微信小程序一，了解小程序基础架构">
+<meta property="og:url" content="https://popo1379.github.io/2016/10/20/2016-10-20/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="距微信小程序公布已经有一个月的时间了，开发工具也已经放出，尽管内测资格有限，但我们依旧可以通过微信小程序开发工具看到微信小程序大体的模样，本文从一个初学者角度，对微信小程序的基础架构进行探究学习。">
+<meta property="og:image" content="https://popo1379.github.io/\Img\2.png">
+<meta property="og:image" content="https://popo1379.github.io/\Img\3.png">
+<meta property="og:image" content="https://popo1379.github.io/\Img\4.png">
+<meta property="og:image" content="https://popo1379.github.io/\Img\5.png">
+<meta property="og:image" content="https://popo1379.github.io/\Img\6.png">
+<meta property="og:updated_time" content="2016-10-20T11:23:51.481Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初识微信小程序一，了解小程序基础架构">
+<meta name="twitter:description" content="距微信小程序公布已经有一个月的时间了，开发工具也已经放出，尽管内测资格有限，但我们依旧可以通过微信小程序开发工具看到微信小程序大体的模样，本文从一个初学者角度，对微信小程序的基础架构进行探究学习。">
+<meta name="twitter:image" content="https://popo1379.github.io/\Img\2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一半生活，一半梦想。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一半生活，一半梦想。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-10-20" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初识微信小程序一，了解小程序基础架构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>距微信小程序公布已经有一个月的时间了，开发工具也已经放出，尽管内测资格有限，但我们依旧可以通过微信小程序开发工具看到微信小程序大体的模样，<br>本文从一个初学者角度，对微信小程序的基础架构进行探究学习。<br><a id="more"></a><br>开发工具创建新项目: <img src="\Img\2.png" alt="1"><br>因为没有内测码，只能选择无APPID模式进入工具内调试，没办法真机测试，所以只能先纸上谈兵咯<br><img src="\Img\3.png" alt="2"><br>开发工具调试界面就长这样，目前小程序开发者工具已经更新到0.10版本，从更新速度看腾讯还是很重视小程序的。<br>小程序的架构：<br><img src="\Img\4.png" alt="3"><br>这是一个大牛做出来的小程序Demo代码架构，腾讯管这种叫MINA架构，可以看到，其中包含了几个文件夹和三个app开头的代码文件，分别是app.js app.json<br>app.wxss,不出意料，这就是小程序代码的核心，小程序在运行过程中将读取这三个文件，生成小程序app。<br><img src="\Img\5.png" alt="4"><br>这是大牛刘智聪做得架构图，这里直接引用了。<br>根据资料，我们可以简单的了解这三个文件功能，方便日后开发小程序做参考；</p>
+<ol>
+<li>app.js为小程序的脚本代码，负责为小程序监听处理生命周期，声明全局变量，调用小程序框架提供的API。</li>
+<li>app.json为小程序提供全局配置，包括设置页面组成，窗口配色，标题等。</li>
+<li>app.wxss 是整个小程序的公共样式表。我们可以在页面组件的 class 属性上直接使用 app.wxss 中声明的样式规则。<br>在前面的代码框架中，我们还发现三个文件夹，Images，pages以及utils。<br>Images负责存放APP中所需要的图片资源。utils是放通用工具类方法的一个文件夹，下面我们来详细了解pages这个文件夹<br>查看该文件夹后，我们可以看到该文件夹负责存放所有页面<br><img src="\Img\6.png" alt="5"><br>可以看到，在这个Demo中共有五个页面，这五个页面都包含在pages文件夹内，每个页面的路径和页面名都需要写在app.json页面的pages类</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="string">"pages"</span>:[</div><div class="line"><span class="string">"pages/message/message"</span>,</div><div class="line"><span class="string">"pages/contact/contact"</span>,</div><div class="line"><span class="string">"pages/dynamic/dynamic"</span>,</div><div class="line"><span class="string">"pages/dynamic/music/music"</span>,</div><div class="line"><span class="string">"pages/index/index"</span>,</div><div class="line"><span class="string">"pages/logs/logs"</span></div><div class="line">],</div><div class="line"> <span class="string">"window"</span>:&#123;</div><div class="line"><span class="string">"backgroundTextStyle"</span>:<span class="string">"light"</span>,</div><div class="line"><span class="string">"navigationBarBackgroundColor"</span>: <span class="string">"#12b7f4"</span>,</div><div class="line"><span class="string">"navigationBarTitleText"</span>: <span class="string">"WeChatForQQ"</span>,</div><div class="line"><span class="string">"navigationBarTextStyle"</span>:<span class="string">"white"</span>,</div><div class="line"><span class="string">"backgroundColor"</span>: <span class="string">"#fbf9fe"</span></div><div class="line">&#125;,</div><div class="line"><span class="string">"tabBar"</span>: &#123;</div><div class="line"><span class="string">"color"</span>: <span class="string">"#9B9DB1"</span>,</div><div class="line"><span class="string">"selectedColor"</span>: <span class="string">"#3cc51f"</span>,</div><div class="line"><span class="string">"borderStyle"</span>: <span class="string">"black"</span>,</div><div class="line"><span class="string">"backgroundColor"</span>: <span class="string">"#ffffff"</span>,</div><div class="line"><span class="string">"list"</span>: [&#123;</div><div class="line"><span class="string">"pagePath"</span>: <span class="string">"pages/message/message"</span>,</div><div class="line"><span class="string">"iconPath"</span>: <span class="string">"images/tab_message_normal.png"</span>,</div><div class="line"><span class="string">"selectedIconPath"</span>: <span class="string">"images/tab_message_selected.png"</span>,</div><div class="line"> <span class="string">"text"</span>: <span class="string">"消息"</span></div><div class="line">&#125;, &#123;</div><div class="line"> <span class="string">"pagePath"</span>: <span class="string">"pages/contact/contact"</span>,</div><div class="line"><span class="string">"iconPath"</span>: <span class="string">"images/tab_contact_normal.png"</span>,</div><div class="line"><span class="string">"selectedIconPath"</span>: <span class="string">"images/tab_contact_selected.png"</span>,</div><div class="line"><span class="string">"text"</span>: <span class="string">"联系人"</span></div><div class="line">&#125;,</div><div class="line">&#123;</div><div class="line"><span class="string">"pagePath"</span>: <span class="string">"pages/dynamic/dynamic"</span>,</div><div class="line"><span class="string">"iconPath"</span>: <span class="string">"images/tab_dynamic_normal.png"</span>,</div><div class="line"><span class="string">"selectedIconPath"</span>: <span class="string">"images/tab_dynamic_selected.png"</span>,</div><div class="line"><span class="string">"text"</span>: <span class="string">"动态"</span></div><div class="line">&#125;]</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每个页面下都有四个文件，以index为例，这四个文件分别是index.js、index.wxml、index.wxss、index.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//index.js</span></div><div class="line"><span class="comment">//获取应用实例</span></div><div class="line"><span class="keyword">var</span> app = getApp()</div><div class="line">Page(&#123;</div><div class="line">  <span class="attr">data</span>: &#123;</div><div class="line">	<span class="attr">motto</span>: <span class="string">'Hello World'</span>,</div><div class="line">	<span class="attr">userInfo</span>: &#123;&#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">//事件处理函数</span></div><div class="line">  bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	wx.navigateTo(&#123;</div><div class="line">	  <span class="attr">url</span>: <span class="string">'../logs/logs'</span></div><div class="line">	&#125;)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">onLoad</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'onLoad'</span>)</div><div class="line">	<span class="keyword">var</span> that = <span class="keyword">this</span></div><div class="line">	<span class="comment">//调用应用实例的方法获取全局数据</span></div><div class="line">	app.getUserInfo(<span class="function"><span class="keyword">function</span>(<span class="params">userInfo</span>)</span>&#123;</div><div class="line">	  <span class="comment">//更新数据</span></div><div class="line">	  that.setData(&#123;</div><div class="line">		<span class="attr">userInfo</span>:userInfo</div><div class="line">	  &#125;)</div><div class="line">	&#125;)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>index.js是页面的脚本文件，在这个文件中我们可以监听处理该页面的生命周期，声明变量，监听事件等。<br>index.json为该页面提供配置，注意，该文件是非必要的，如果没有在指定该文件，小程序将直接使用app.json中的默认配置。<br>index.wxss为页面提供样式表，和json一样，没有指定该文件时小程序默认app.wxss为该页面的样式表。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">.userinfo &#123;</div><div class="line">  display: flex;</div><div class="line">  flex-direction: column;</div><div class="line">  align-items: center;</div><div class="line">&#125;</div><div class="line">.userinfo-avatar &#123;</div><div class="line">  width: 128rpx;</div><div class="line">  height: 128rpx;</div><div class="line">  margin: 20rpx;</div><div class="line">  border-radius: 50%;</div><div class="line">&#125;</div><div class="line">.userinfo-nickname &#123;</div><div class="line">  color: #aaa;</div><div class="line">&#125;</div><div class="line">.usermotto &#123;</div><div class="line">  margin-top: 200px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>本文仅以学习为目的，写的很浅，有很多地方不到位，感谢围观。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/20/2016-10-20/" class="archive-article-date">
+  	<time datetime="2016-10-20T05:03:28.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-20</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/19/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">android自学开发者，目前在东北某小城市念书。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
