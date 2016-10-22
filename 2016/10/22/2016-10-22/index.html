@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>android开发之JSON数据格式解析实际案例 | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JSON百科：JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(一般用于提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android开发之JSON数据格式解析实际案例">
+<meta property="og:url" content="https://popo1379.github.io/2016/10/22/2016-10-22/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="JSON百科：JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(一般用于提">
+<meta property="og:updated_time" content="2016-10-22T10:01:47.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android开发之JSON数据格式解析实际案例">
+<meta name="twitter:description" content="JSON百科：JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(一般用于提">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一半生活，一半梦想。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一半生活，一半梦想。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-10-22" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      android开发之JSON数据格式解析实际案例
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JSON百科：JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON采用完全独立于语言<br>的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想<br>的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(一般用于提升网络传输速率)。</p>
+<p>在Android开发过程中，我们经常需要和服务器进行数据交互，目前常用的交互格式有两种，XML以及JSON,在android开发中大部分交互都使<br>用JSON，因为JSON具有小，轻，快的特点，适合移动互联网传递数据，本文将用实际开发案例对JSON使用方法进行解析。</p>
+<p>实际上，android平台对JSON是很友好的，google已经提供了相关的API可以让我们轻松提取数据流中的信息。</p>
+<p>Android的JSON解析部分都在包org.json下，主要有以下几个类：<br>JSONObject：可以看作是一个json对象,这是系统中有关JSON定义的基本单元，其包含一对儿(Key/Value)数值。它对外部(External：应用<br>toString()方法输出的数值)调用的响应体现为一个标准的字符串（例如：{“JSON”: “Hello, World”}，最外被大括号包裹，其中的Key和<br>Value被冒号”:”分隔）。其对于内部(Internal)行为的操作格式略微，例如：初始化一个JSONObject实例，引用内部的put()方法添加数值：<br>new JSONObject().put(“JSON”, “Hello, World!”)，在Key和Value之间是以逗号”,”分隔。Value的类型包括：Boolean、JSONArray、JSONObject、<br>Number、String或者默认值JSONObject.NULL object。</p>
+<p>JSONStringer：json文本构建类 ，根据官方的解释，这个类可以帮助快速和便捷的创建JSON text。其最大的优点在于可以减少由于 格式<br>的错误导致程序异常，引用这个类可以自动严格按照JSON语法规则（syntax rules）创建JSON text。每个JSONStringer实体只能对应创建<br>一个JSON text。。其最大的优点在于可以减少由于格式的错误导致程序异常，引用这个类可以自动严格按照JSON语法规则（syntax rules）<br>创建JSON text。每个JSONStringer实体只能对应创建一个JSON text。</p>
+<p>JSONArray：它代表一组有序的数值。将其转换为String输出(toString)所表现的形式是用方括号包裹，数值以逗号”,”分隔（例<br>如：[value1,value2,value3]，大家可以亲自利用简短的代码更加直观的了解其格式）。这个类的内部同样具有查询行为，get()和opt()两种<br>方法都可以通过index索引返回指定的数值，put()方法用来添加或者替换数值。同样这个类的value类型可以包括：Boolean、JSONArray、<br>JSONObject、Number、String或者默认值JSONObject.NULL object。<br>JSONTokener：json解析类<br>JSONException：json中用到的异常</p>
+<a id="more"></a>
+<p>下面让我们看看具体代码案例为大家演示JSON格式数据解析<br>这个Demo中直接使用了百度API应用商店中的免费天气预报，个人觉得百度这个商店搞的还是可以的，有官方的SDK简化调用API，适合快速开发<br>返回JSON数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">"HeWeather data service 3.0"</span>: [</div><div class="line">        &#123;</div><div class="line">            <span class="string">"aqi"</span>: &#123;</div><div class="line">                <span class="string">"city"</span>: &#123;</div><div class="line">                    <span class="string">"aqi"</span>: <span class="string">"15"</span>,</div><div class="line">                    <span class="string">"co"</span>: <span class="string">"0"</span>,</div><div class="line">                    <span class="string">"no2"</span>: <span class="string">"20"</span>,</div><div class="line">                    <span class="string">"o3"</span>: <span class="string">"40"</span>,</div><div class="line">                    <span class="string">"pm10"</span>: <span class="string">"15"</span>,</div><div class="line">                    <span class="string">"pm25"</span>: <span class="string">"14"</span>,</div><div class="line">                    <span class="string">"qlty"</span>: <span class="string">"优"</span>,</div><div class="line">                    <span class="string">"so2"</span>: <span class="string">"2"</span></div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="string">"basic"</span>: &#123;</div><div class="line">                <span class="string">"city"</span>: <span class="string">"北京"</span>,</div><div class="line">                <span class="string">"cnty"</span>: <span class="string">"中国"</span>,</div><div class="line">                <span class="string">"id"</span>: <span class="string">"CN101010100"</span>,</div><div class="line">                <span class="string">"lat"</span>: <span class="string">"39.904000"</span>,</div><div class="line">                <span class="string">"lon"</span>: <span class="string">"116.391000"</span>,</div><div class="line">                <span class="string">"update"</span>: &#123;</div><div class="line">                    <span class="string">"loc"</span>: <span class="string">"2016-10-22 17:04"</span>,</div><div class="line">                    <span class="string">"utc"</span>: <span class="string">"2016-10-22 09:04"</span></div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="string">"daily_forecast"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:32"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:25"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"101"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"101"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"多云"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"多云"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-22"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"67"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"0.0"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"6"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1024"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"15"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"7"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"42"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"东北风"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"3-4"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"11"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:33"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:23"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"晴"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"晴"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-23"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"50"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"0.0"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"9"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1022"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"15"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"5"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"184"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"2"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:34"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:22"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"104"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"阴"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"晴"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-24"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"65"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"6.4"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"97"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1018"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"13"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"6"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"9"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"175"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"7"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:35"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:21"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"101"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"晴"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"多云"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-25"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"77"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"0.0"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"0"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1017"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"16"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"8"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"178"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"10"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:36"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:19"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"101"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"104"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"多云"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"阴"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-26"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"62"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"0.0"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"0"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1025"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"17"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"8"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"139"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"1"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:38"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:18"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"104"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"阴"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"晴"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-27"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"79"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"5.2"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"90"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1026"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"16"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"10"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"9"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"146"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"10"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"astro"</span>: &#123;</div><div class="line">                        <span class="string">"sr"</span>: <span class="string">"06:39"</span>,</div><div class="line">                        <span class="string">"ss"</span>: <span class="string">"17:17"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"cond"</span>: &#123;</div><div class="line">                        <span class="string">"code_d"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"code_n"</span>: <span class="string">"100"</span>,</div><div class="line">                        <span class="string">"txt_d"</span>: <span class="string">"晴"</span>,</div><div class="line">                        <span class="string">"txt_n"</span>: <span class="string">"晴"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-28"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"39"</span>,</div><div class="line">                    <span class="string">"pcpn"</span>: <span class="string">"0.3"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"31"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1030"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: &#123;</div><div class="line">                        <span class="string">"max"</span>: <span class="string">"14"</span>,</div><div class="line">                        <span class="string">"min"</span>: <span class="string">"5"</span></div><div class="line">                    &#125;,</div><div class="line">                    <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"347"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"无持续风向"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"0"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            <span class="string">"hourly_forecast"</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-22 19:00"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"63"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"1"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1024"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: <span class="string">"12"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"110"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"东南风"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"6"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="string">"date"</span>: <span class="string">"2016-10-22 22:00"</span>,</div><div class="line">                    <span class="string">"hum"</span>: <span class="string">"57"</span>,</div><div class="line">                    <span class="string">"pop"</span>: <span class="string">"5"</span>,</div><div class="line">                    <span class="string">"pres"</span>: <span class="string">"1026"</span>,</div><div class="line">                    <span class="string">"tmp"</span>: <span class="string">"10"</span>,</div><div class="line">                    <span class="string">"wind"</span>: &#123;</div><div class="line">                        <span class="string">"deg"</span>: <span class="string">"171"</span>,</div><div class="line">                        <span class="string">"dir"</span>: <span class="string">"南风"</span>,</div><div class="line">                        <span class="string">"sc"</span>: <span class="string">"微风"</span>,</div><div class="line">                        <span class="string">"spd"</span>: <span class="string">"8"</span></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            <span class="string">"now"</span>: &#123;</div><div class="line">                <span class="string">"cond"</span>: &#123;</div><div class="line">                    <span class="string">"code"</span>: <span class="string">"101"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"多云"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"fl"</span>: <span class="string">"12"</span>,</div><div class="line">                <span class="string">"hum"</span>: <span class="string">"52"</span>,</div><div class="line">                <span class="string">"pcpn"</span>: <span class="string">"0"</span>,</div><div class="line">                <span class="string">"pres"</span>: <span class="string">"1023"</span>,</div><div class="line">                <span class="string">"tmp"</span>: <span class="string">"13"</span>,</div><div class="line">                <span class="string">"vis"</span>: <span class="string">"10"</span>,</div><div class="line">                <span class="string">"wind"</span>: &#123;</div><div class="line">                    <span class="string">"deg"</span>: <span class="string">"40"</span>,</div><div class="line">                    <span class="string">"dir"</span>: <span class="string">"东北风"</span>,</div><div class="line">                    <span class="string">"sc"</span>: <span class="string">"4-5"</span>,</div><div class="line">                    <span class="string">"spd"</span>: <span class="string">"24"</span></div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            <span class="string">"status"</span>: <span class="string">"ok"</span>,</div><div class="line">            <span class="string">"suggestion"</span>: &#123;</div><div class="line">                <span class="string">"comf"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"较舒适"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"白天天气晴好，早晚会感觉偏凉，午后舒适、宜人。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"cw"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"较适宜"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"drsg"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"较冷"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"建议着厚外套加毛衣等服装。年老体弱者宜着大衣、呢外套加羊毛衫。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"flu"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"较易发"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"天气较凉，较易发生感冒，请适当增加衣服。体质较弱的朋友尤其应该注意防护。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"sport"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"较适宜"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"天气较好，但风力较大，推荐您进行室内运动，若在户外运动请注意避风保暖。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"trav"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"适宜"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"天气较好，温度适宜，但风稍微有点大。这样的天气适宜旅游，您可以尽情地享受大自然的无限风光。"</span></div><div class="line">                &#125;,</div><div class="line">                <span class="string">"uv"</span>: &#123;</div><div class="line">                    <span class="string">"brf"</span>: <span class="string">"弱"</span>,</div><div class="line">                    <span class="string">"txt"</span>: <span class="string">"紫外线强度较弱，建议出门前涂擦SPF在12-15之间、PA+的防晒护肤品。"</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>百度SDK调用API（需下载SDK到你的项目中，SDK网址：<a href="http://bbs.apistore.baidu.com/forum.php?mod=viewthread&amp;tid=734&amp;page=1&amp;extra=#pid1229）：" target="_blank" rel="external">http://bbs.apistore.baidu.com/forum.php?mod=viewthread&amp;tid=734&amp;page=1&amp;extra=#pid1229）：</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">apiTest</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        Parameters para = <span class="keyword">new</span> Parameters();</div><div class="line"></div><div class="line">        para.put(<span class="string">"city"</span>, <span class="string">"jilin"</span>);</div><div class="line">        ApiStoreSDK.execute(<span class="string">"http://apis.baidu.com/heweather/weather/free"</span>,</div><div class="line">                ApiStoreSDK.GET,</div><div class="line">                para,</div><div class="line">                <span class="keyword">new</span> ApiCallBack() &#123;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(<span class="keyword">int</span> status, String responseString)</span> </span>&#123;</div><div class="line">                        Log.i(<span class="string">"sdkdemo"</span>, <span class="string">"onSuccess"</span>);</div><div class="line">                        WeatherUtility.handleWeatherResponse(MainActivity.<span class="keyword">this</span>, responseString);</div><div class="line"></div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>&#123;</div><div class="line">                        Log.i(<span class="string">"sdkdemo"</span>, <span class="string">"onComplete"</span>);</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(<span class="keyword">int</span> status, String responseString, Exception e)</span> </span>&#123;</div><div class="line">                        Log.i(<span class="string">"sdkdemo"</span>, <span class="string">"onError, status: "</span> + status);</div><div class="line">                        Log.i(<span class="string">"sdkdemo"</span>, <span class="string">"errMsg: "</span> + (e == <span class="keyword">null</span> ? <span class="string">""</span> : e.getMessage()));</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;);</div><div class="line">        showWeather();</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>API得到的JSON格式数据responseString传入WeatherUtility中的handleWeatherResponse函数中，使用前面介绍的JSON API对数据进行解析，这里因为只是一个简单Demo所以只对部分数据进行解析：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherUtility</span></span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 解析服务器返回的JSON数据，并将解析出的数据储存到本地</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">handleWeatherResponse</span><span class="params">(Context context,String response)</span></span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">			<span class="comment">// 首先最外层是&#123;&#125;，创建一个对象 </span></div><div class="line">            JSONObject jsonObject=<span class="keyword">new</span> JSONObject(response);</div><div class="line">            <span class="comment">//将json对象转换成bean对象。</span></div><div class="line">            JSONArray weatherInfo=jsonObject.getJSONArray(<span class="string">"HeWeather data service 3.0"</span>);</div><div class="line">            JSONObject weatherInfo1=(JSONObject)weatherInfo.get(<span class="number">0</span>);</div><div class="line">            JSONArray weatherInfo2=weatherInfo1.getJSONArray(<span class="string">"hourly_forecast"</span>);</div><div class="line">            JSONObject weatherInfo3=(JSONObject)weatherInfo2.get(<span class="number">0</span>);</div><div class="line">            String text=weatherInfo3.getString(<span class="string">"pop"</span>);</div><div class="line">            String temperature=weatherInfo3.getString(<span class="string">"tmp"</span>);</div><div class="line">            String time=weatherInfo3.getString(<span class="string">"date"</span>);</div><div class="line">            <span class="comment">//存入储存文件中。</span></div><div class="line">            saveWeatherInfo(context,text,temperature,time);</div><div class="line">        &#125;<span class="keyword">catch</span> (JSONException e)&#123;</div><div class="line">            e.printStackTrace();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveWeatherInfo</span><span class="params">(Context context,String text,String temperature,String time)</span></span>&#123;</div><div class="line">    SharedPreferences.Editor editor= PreferenceManager.getDefaultSharedPreferences(context).edit();</div><div class="line">    editor.putString(<span class="string">"text"</span>,text);</div><div class="line">    editor.putString(<span class="string">"temperature"</span>,temperature);</div><div class="line">    editor.putString(<span class="string">"time"</span>,time);</div><div class="line">    <span class="comment">//提交当前数据</span></div><div class="line">    editor.commit();</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到，我们将数据传递到handleWeatherResponse方法内后，先把数据传入JSONObject类中将JSON对象转换为bean对象，然后使用getJSONArray方法得到”HeWeather data service 3.0”数组<br>对象weatherInfo，再调用get()方法指定返回的数值，这里调用get(0)即调用”HeWeather data service 3.0”数组内的第一个{}，之后的代码和前面如出一辙，最后调用<br>JSONObject类的getXX()方法就可以得到对应传入字符的数据.<br>在本Demo中我们使用轻量级储存类SharedPreferences对数据进行储存，将得到的数据一一存入editor中，取出时直接调用下列代码就OK了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showWeather</span><span class="params">()</span> </span>&#123;</div><div class="line">       SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(<span class="keyword">this</span>);</div><div class="line">       temperature.setText(prefs.getString(<span class="string">"temperature"</span>, <span class="string">""</span>)+<span class="string">"℃"</span>);</div><div class="line">       weather_state.setText(<span class="string">"降雨概率："</span>+prefs.getString(<span class="string">"text"</span>, <span class="string">""</span>)+<span class="string">"%"</span>);</div><div class="line">       time.setText(prefs.getString(<span class="string">"time"</span>,<span class="string">""</span>));</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>本文仅为学习，加深记忆</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/22/2016-10-22/" class="archive-article-date">
+  	<time datetime="2016-10-22T09:00:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-22</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/20/2016-10-20/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初识微信小程序一，了解小程序基础架构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/android开发/" style="font-size: 10px;">android开发</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">android自学开发者，目前在东北某小城市念书。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
