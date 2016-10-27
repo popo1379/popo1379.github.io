@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android开发之实现带小圆点的ViewPager导航 | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依旧可以利用现有控件实现这一功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之实现带小圆点的ViewPager导航">
+<meta property="og:url" content="https://popo1379.github.io/2016/10/27/2016-10-27/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依旧可以利用现有控件实现这一功能。">
+<meta property="og:image" content="https://popo1379.github.io/\Img\2016-10-27-1.png">
+<meta property="og:updated_time" content="2016-10-27T05:40:13.385Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发之实现带小圆点的ViewPager导航">
+<meta name="twitter:description" content="在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依旧可以利用现有控件实现这一功能。">
+<meta name="twitter:image" content="https://popo1379.github.io/\Img\2016-10-27-1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一半生活，一半梦想。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一半生活，一半梦想。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-10-27" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android开发之实现带小圆点的ViewPager导航
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，<br>相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依<br>旧可以利用现有控件实现这一功能。</p>
+<a id="more"></a>
+<p>下面是我最近写的一款简易播放器界面：<br><img src="\Img\2016-10-27-1.png" alt="1"></p>
+<p>现将功能实现代码贴上：<br>布局：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span></span></div><div class="line">     <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">     <span class="attr">android:layout_height</span>=<span class="string">"150dp"</span>&gt;</div><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span></div><div class="line">         <span class="attr">android:id</span>=<span class="string">"@+id/banner_viewpager"</span></div><div class="line">         <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">         <span class="attr">android:layout_height</span>=<span class="string">"160dp"</span>/&gt;</div><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">         <span class="attr">android:id</span>=<span class="string">"@+id/banner_viewpager_points"</span></div><div class="line">         <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">         <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">         <span class="attr">android:layout_alignParentBottom</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">android:layout_centerHorizontal</span>=<span class="string">"true"</span></div><div class="line">         <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>/&gt;</div><div class="line"> <span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以看到，在布局文件中，我们需要用ViewPager作为框架，内部放入LinearLayout作为小圆点的界面<br>小圆点drawable代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"oval"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">size</span> <span class="attr">android:width</span>=<span class="string">"7dp"</span> <span class="attr">android:height</span>=<span class="string">"7dp"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"@color/base_color"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"></div><div class="line">	<span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"false"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">shape</span> <span class="attr">android:shape</span>=<span class="string">"oval"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">size</span> <span class="attr">android:width</span>=<span class="string">"7dp"</span> <span class="attr">android:height</span>=<span class="string">"7dp"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#77ffffff"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">shape</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>将以上代码新建至drawable文件夹中，作为小圆点图片资源</p>
+<p>后台代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> ViewPager mViewPager;</div><div class="line">    <span class="keyword">private</span> ArrayList&lt;View&gt; mViewpages;</div><div class="line">    <span class="comment">//导航圆点图片</span></div><div class="line">    <span class="keyword">private</span> ImageView mImageView;</div><div class="line">    <span class="comment">//导航圆点数组</span></div><div class="line">    <span class="keyword">private</span> ImageView[] imageViews;</div><div class="line">    <span class="comment">// 包裹小圆点的LinearLayout</span></div><div class="line">    <span class="keyword">private</span> LinearLayout mPoints;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> lastPosition;</div><div class="line">	  <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">		</div><div class="line">		   mViewPager=(ViewPager)findViewById(R.id.banner_viewpager);</div><div class="line">        mPoints=(LinearLayout)findViewById(R.id.banner_viewpager_points);</div><div class="line">		</div><div class="line">		  <span class="comment">//将图片装入ViewPager:</span></div><div class="line">        <span class="keyword">int</span> [] img=<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;R.drawable.main_viewpager_pic1,R.drawable.main_viewpager_pic2,R.drawable.main_viewpager_pic3,</div><div class="line">                R.drawable.main_viewpager_pic4,R.drawable.main_viewpager_pic5&#125;;</div><div class="line">        mViewpages=<span class="keyword">new</span> ArrayList&lt;View&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;img.length;i++) &#123;</div><div class="line">            LinearLayout linearLayout = <span class="keyword">new</span> LinearLayout(MainActivity.<span class="keyword">this</span>);</div><div class="line">            LinearLayout.LayoutParams ltp = <span class="keyword">new</span> LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);</div><div class="line">            <span class="keyword">final</span> ImageView imageView = <span class="keyword">new</span> ImageView(MainActivity.<span class="keyword">this</span>);</div><div class="line">            <span class="comment">//将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽</span></div><div class="line">            imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);</div><div class="line">        <span class="comment">//动态设置图片显示</span></div><div class="line">            imageView.setImageResource(img[i]);</div><div class="line">            <span class="comment">//绑定小圆点</span></div><div class="line">            linearLayout.addView(imageView, ltp);</div><div class="line">            <span class="comment">//将资源加入到Viewpager中</span></div><div class="line">            mViewpages.add(linearLayout);</div><div class="line">        &#125;</div><div class="line">        mViewPager.setAdapter(<span class="keyword">new</span> MainViewpagerAdapter(mViewpages));</div><div class="line">            mViewPager.addOnPageChangeListener(<span class="keyword">new</span> ViewPager.OnPageChangeListener() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> positionOffset, <span class="keyword">int</span> positionOffsetPixels)</span> </span>&#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="meta">@Override</span></div><div class="line">				  <span class="comment">// onPageSelected方法是页面跳转完后得到调用,position为位置编号。</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">                    <span class="comment">// 控制底部导航点的显示</span></div><div class="line">                    position %= mViewpages.size();</div><div class="line">                    mPoints.getChildAt(position).setEnabled(<span class="keyword">true</span>);</div><div class="line">                    mPoints.getChildAt(lastPosition).setEnabled(<span class="keyword">false</span>);</div><div class="line">                    lastPosition = position;</div><div class="line">                &#125;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 动态加载指示点</div><div class="line"> */</div><div class="line">        imageViews=<span class="keyword">new</span> ImageView[mViewpages.size()];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;mViewpages.size();i++) &#123;</div><div class="line">            LinearLayout.LayoutParams margin = <span class="keyword">new</span> LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,</div><div class="line">                    LinearLayout.LayoutParams.WRAP_CONTENT);</div><div class="line">            mImageView = <span class="keyword">new</span> ImageView(MainActivity.<span class="keyword">this</span>);</div><div class="line">            mImageView.setBackgroundResource(R.drawable.viewpager_point);</div><div class="line">            imageViews[i] = mImageView;</div><div class="line">            <span class="comment">// 设置每个小圆点距离左边的间距</span></div><div class="line">            margin.setMargins(<span class="number">10</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">            mImageView.setLayoutParams(margin);</div><div class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</div><div class="line">                mImageView.setEnabled(<span class="keyword">true</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                mImageView.setEnabled(<span class="keyword">false</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            mPoints.addView(mImageView);</div><div class="line">        &#125;</div><div class="line">		</div><div class="line">		&#125;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<pre><code>ViewPager适配器：
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainViewpagerAdapter</span> <span class="keyword">extends</span> <span class="title">PagerAdapter</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> ArrayList&lt;View&gt; mViewpagees;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MainViewpagerAdapter</span><span class="params">(ArrayList&lt;View&gt; mViewpages)</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.mViewpagees = mViewpages;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Object <span class="title">instantiateItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">            View view = mViewpagees.get(position %  mViewpagees.size());</div><div class="line">            container.addView(view);</div><div class="line">            <span class="keyword">return</span> view;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroyItem</span><span class="params">(ViewGroup container, <span class="keyword">int</span> position, Object object)</span> </span>&#123;</div><div class="line">            container.removeView((View) object);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> Integer.MAX_VALUE;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isViewFromObject</span><span class="params">(View view, Object object)</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> view == object;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/27/2016-10-27/" class="archive-article-date">
+  	<time datetime="2016-10-27T04:40:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/22/2016-10-22/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android开发之JSON数据格式解析实际案例</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/android开发/" style="font-size: 20px;">android开发</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">android自学开发者，目前在东北某小城市念书。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
