@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/11 | popo的避风小港</title>
+  <title>『持续更新』Android Layout：XML各布局常用属性大杂烩 | popo的避风小港</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="非专业android自学开发者，目前在东北某小城市念书。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="popo的避风小港">
-<meta property="og:url" content="https://popo1379.github.io/archives/2016/11/index.html">
+  <meta name="description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
+relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『持续更新』Android Layout：XML各布局常用属性大杂烩">
+<meta property="og:url" content="https://popo1379.github.io/2016/11/06/2016-11-6/index.html">
 <meta property="og:site_name" content="popo的避风小港">
-<meta property="og:description" content="非专业android自学开发者，目前在东北某小城市念书。">
+<meta property="og:description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
+relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
+<meta property="og:image" content="https://popo1379.github.io/\Img\2016-11-10-0.png">
+<meta property="og:updated_time" content="2016-11-10T12:34:12.779Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="popo的避风小港">
-<meta name="twitter:description" content="非专业android自学开发者，目前在东北某小城市念书。">
+<meta name="twitter:title" content="『持续更新』Android Layout：XML各布局常用属性大杂烩">
+<meta name="twitter:description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
+relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
+<meta name="twitter:image" content="https://popo1379.github.io/\Img\2016-11-10-0.png">
   
     <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
   
@@ -138,86 +144,114 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-2016-11-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="article-title" itemprop="name">
+      『持续更新』Android Layout：XML各布局常用属性大杂烩
+    </h1>
   
+
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
+        <p>本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。</p>
+<p>relativelayout布局（相对布局）：<br>android:layout_above 将该控件的底部至于给定ID的控件之上<br>android:layout_below 将该控件的顶部至于给定ID的控件之下<br>android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐<br>android:layout_toRightOf 将该控件的左边缘和给定ID的控件的右边缘对齐</p>
+<p>android:layout_alignBaseline 该控件的baseline和给定ID的控件的baseline对齐<br>android:layout_alignBottom 将该控件的底部边缘与给定ID控件的底部边缘对齐<br>android:layout_alignLeft 将该控件的左边缘与给定ID控件的左边缘对齐<br>android:layout_alignRight 将该控件的右边缘与给定ID控件的右边缘对齐<br>android:layout_alignTop 将给定控件的顶部边缘与给定ID控件的顶部对齐</p>
+<a id="more"></a>
+<p>android:alignParentBottom 如果该值为true，则将该控件的底部和父控件的底部对齐<br>android:layout_alignParentLeft 如果该值为true，则将该控件的左边与父控件的左边对齐<br>android:layout_alignParentRight 如果该值为true，则将该控件的右边与父控件的右边对齐<br>android:layout_alignParentTop 如果该值为true，则将空间的顶部与父控件的顶部对齐</p>
+<p>android:layout_centerHorizontal 如果值为真，该控件将被至于水平方向的中央<br>android:layout_centerInParent 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央<br>android:layout_centerVertical 如果值为真，该控件将被至于垂直方向的中央</p>
+<p>==========================================================================================</p>
+<p>LinearLayout布局（线性布局）：</p>
+<p>android:orientation<br>决定是水平排列或是垂直排列<br>vertical 垂直排列<br>horizontal 水平排列</p>
+<p>android:gravity<br>设定框架的内容的放置方向<br>center 水平垂直皆置中<br>center_vertical 垂直置中<br>center_horizontal 水平置中<br>top 置顶<br>left 置左<br>bottom 置底<br>right 置右</p>
+<p>android:layout_weight<br>子元件或子框架的比重。<br>LinearLayout 下的子元件或子框架，才能设定这项属性。当所有控件的值都设为1时，大小全部相同。</p>
+<p>android:layout_alignParentBottom=”true” alignparentbottom：是否显示在容器底部。 值为true 或者 false</p>
+<p>================================================================================================</p>
+<p>其它常用属性：</p>
+<p>background会根据ImageView组件给定的长宽进行拉伸，而src就存放的是原图的大小，不会进行拉伸。src是图片内容（前景），bg是背景，可以同时使用。<br>此外：scaleType只对src起作用；bg可设置透明度，比如在ImageButton中就可以用Android:scaleType控制图片的缩放方式。<br>scaleType常用属性：<br>CENTER /center 在视图中心显示图片，并且不缩放图片</p>
+<p>CENTER_CROP / centerCrop 按比例缩放图片，使得图片长 (宽)的大于等于视图的相应维度</p>
+<p>CENTER_INSIDE / centerInside 按比例缩放图片，使得图片长 (宽)的小于等于视图的相应维度</p>
+<p>FIT_CENTER / fitCenter 按比例缩放图片到视图的最小边，居中显示</p>
+<p>FIT_END / fitEnd 按比例缩放图片到视图的最小边，显示在视图的下部分位置</p>
+<p>FIT_START / fitStart 把图片按比例扩大/缩小到视图的最小边，显示在视图的上部分位置</p>
+<p>FIT_XY / fitXY 把图片不按比例缩放到视图的大小显示</p>
+<p>MATRIX / matrix 用矩阵来绘制</p>
+<p>==========================================================================================<br>EditText的android:hint </p>
+<p>设置EditText为空时输入框内的提示信息。 </p>
+<p>android:gravity　<br>android:gravity属性是对该view 内容的限定．比如一个button 上面的text.  你可以设置该text 在view的靠左，靠右等位置．以button为例，android:gravity=”right”则button上面的文字靠右 </p>
+<p>android:layout_gravity<br>android:layout_gravity是用来设置该view相对与起父view 的位置．比如一个button 在linearlayout里，你想把该button放在靠左、靠右等位置就可以通过该属性设置．以button为例，android:layout_gravity=”right”则button靠右 </p>
+<p>android:layout_alignParentRight<br>使当前控件的右端和父控件的右端对齐。这里属性值只能为true或false，默认false。 </p>
+<p>layout_margin就是设置view的上下左右边框的额外空间</p>
+<p>android:padding是设置内容相对view的边框的距离</p>
+<p><img src="\Img\2016-11-10-0.png" alt="1"></p>
+<p>未完待续</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/06/2016-11-6/" class="archive-article-date">
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/06/2016-11-6/" class="archive-article-date">
   	<time datetime="2016-11-06T03:25:01.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/06/2016-11-6/">『持续更新』Android Layout：XML各布局常用属性大杂烩</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/04/2016-11-4/" class="archive-article-date">
-  	<time datetime="2016-11-04T09:46:15.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/04/2016-11-4/">Android开发：RecyclerView实现简单瀑布流效果</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/04/2016-11-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android开发：RecyclerView实现简单瀑布流效果</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
 
 
       </div>
@@ -240,8 +274,8 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
