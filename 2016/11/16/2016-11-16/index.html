@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告 | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出来，以后有需求再回来看看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告">
+<meta property="og:url" content="https://popo1379.github.io/2016/11/16/2016-11-16/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出来，以后有需求再回来看看">
+<meta property="og:image" content="https://popo1379.github.io/\Img\2016-11-16.png">
+<meta property="og:updated_time" content="2016-11-16T12:31:47.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告">
+<meta name="twitter:description" content="前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出来，以后有需求再回来看看">
+<meta name="twitter:image" content="https://popo1379.github.io/\Img\2016-11-16.png">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">一半生活，一半梦想。</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">一半生活，一半梦想。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-11-16" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等<br>各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出<br>来，以后有需求再回来看看。<br>一下是大牛们总结的特效：</p>
+<p>1.多线程下载图片，图片可以来源于网络，文件系统，项目文件夹assets中以及drawable中等<br>2.支持随意的配置ImageLoader，例如线程池，图片下载器，内存缓存策略，硬盘缓存策略，图片显示选项以及其他的一些配置<br>3.支持图片的内存缓存，文件系统缓存或者SD卡缓存<br>4.支持图片下载过程的监听<br>5.根据控件(ImageView)的大小对Bitmap进行裁剪，减少Bitmap占用过多的内存<br>6.较好的控制图片的加载过程，例如暂停图片加载，重新开始加载图片，一般使用在ListView,GridView中，滑动过程中暂停加载图片，停止滑动的时候去加载图片<br>7.提供在较慢的网络下对图片进行加载</p>
+<a id="more"></a>
+<p><img src="\Img\2016-11-16.png" alt="1"></p>
+<p>准备工作：<br>1.下载Universal-Image-Loader，添加到libs目录下</p>
+<ol>
+<li>manifests添加下列代码：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span>&gt;</span><span class="tag">&lt;/<span class="name">uses-permission</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 访问网络，网络定位需要上网--&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.INTERNET"</span> /&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>OK，开始写代码了</p>
+<p>首先新建MyApplication继承Application<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO 您的其他初始化流程</span></div><div class="line">        initImageLoader(getApplicationContext());</div><div class="line">        <span class="keyword">super</span>.onCreate();</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initImageLoader</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        ImageLoaderConfiguration config = <span class="keyword">new</span> ImageLoaderConfiguration</div><div class="line">                .Builder(context)</div><div class="line">                .memoryCacheExtraOptions(<span class="number">100</span>, <span class="number">100</span>) <span class="comment">// max width, max height，即保存的每个缓存文件的最大长宽</span></div><div class="line"></div><div class="line">                .threadPoolSize(<span class="number">5</span>)<span class="comment">//线程池内加载的数量</span></div><div class="line">                .threadPriority(Thread.NORM_PRIORITY - <span class="number">2</span>)</div><div class="line">                .denyCacheImageMultipleSizesInMemory()</div><div class="line">                .memoryCache(<span class="keyword">new</span> UsingFreqLimitedMemoryCache(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)) <span class="comment">// You can pass your own memory cache implementation/你可以通过自己的内存缓存实现</span></div><div class="line">                .memoryCacheSize(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">                .discCacheSize(<span class="number">50</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">                .discCacheFileNameGenerator(<span class="keyword">new</span> Md5FileNameGenerator())<span class="comment">//将保存的时候的URI名称用MD5 加密</span></div><div class="line">                .tasksProcessingOrder(QueueProcessingType.LIFO)</div><div class="line">                .discCacheFileCount(<span class="number">100</span>) <span class="comment">//缓存的文件数</span></div><div class="line">                .defaultDisplayImageOptions(DisplayImageOptions.createSimple())</div><div class="line">                .imageDownloader(<span class="keyword">new</span> BaseImageDownloader(context, <span class="number">20</span>* <span class="number">1000</span>, <span class="number">60</span> * <span class="number">1000</span>)) <span class="comment">// connectTimeout (5 s), readTimeout (30 s)超时时间</span></div><div class="line">                .writeDebugLogs() <span class="comment">// Remove for release app</span></div><div class="line">                .build();<span class="comment">//开始构建</span></div><div class="line">        <span class="comment">// Initialize ImageLoader with configuration.</span></div><div class="line">        ImageLoader.getInstance().init(config);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在MyApplication中，我们可以进行框架的设置，我们在项目中不需要每一个都自己设置，一般使用createDefault()创建的ImageLoaderConfiguration就能使用，然后调用ImageLoader的init（）方法<br>将ImageLoaderConfiguration参数传递进去，ImageLoader使用单例模式。</p>
+<p>下面，我们就可以在项目代码里使用框架咯</p>
+<p>我们在准备好解析错误显示时的提示图片，图片所需的imageUrl和相关的控件后，开始设置options（DisplayImageOptions配置信息）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">options = <span class="keyword">new</span> DisplayImageOptions.Builder()</div><div class="line">                 .showImageOnLoading(R.drawable.newspic_loading) <span class="comment">// 设置图片下载期间显示的图片</span></div><div class="line">                 .showImageForEmptyUri(R.drawable.newspic_emptyuri) <span class="comment">// 设置图片Uri为空或是错误的时候显示的图片</span></div><div class="line">                 .showImageOnFail(R.drawable.newspic_fail) <span class="comment">// 设置图片加载或解码过程中发生错误显示的图片</span></div><div class="line">                 .cacheInMemory(<span class="keyword">true</span>) <span class="comment">// 设置下载的图片是否缓存在内存中</span></div><div class="line">                 .cacheOnDisk(<span class="keyword">true</span>) <span class="comment">// 设置下载的图片是否缓存在SD卡中</span></div><div class="line">                <span class="comment">// .displayer(new RoundedBitmapDisplayer(10)) // 设置成圆角图片</span></div><div class="line">                 .build(); <span class="comment">// 构建完成</span></div></pre></td></tr></table></figure>
+<p>显示图片：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ImageLoader.getInstance().displayImage(uri, imageView, options);</div></pre></td></tr></table></figure>
+<p>三个参数分别是图片URL地址，imageView控件，设置。</p>
+<p>这样，我们就可以异步加载网络图片了。</p>
+<p>项目代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">android.support.design.widget.AppBarLayout</span></span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme.AppBarOverlay"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">android.support.v7.widget.Toolbar</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/news_toolbar"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"?attr/actionBarSize"</span></div><div class="line">            <span class="attr">android:background</span>=<span class="string">"?attr/colorPrimary"</span></div><div class="line">            <span class="attr">app:popupTheme</span>=<span class="string">"@style/AppTheme.PopupOverlay"</span></div><div class="line">            /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">android.support.design.widget.AppBarLayout</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">android.support.v4.widget.SwipeRefreshLayout</span></span></div><div class="line">    <span class="attr">android:id</span>=<span class="string">"@+id/swipRefresh"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:padding</span>=<span class="string">"10dp"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/news_RV_list"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</div><div class="line"></div><div class="line">     <span class="tag">&lt;/<span class="name">android.support.v4.widget.SwipeRefreshLayout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.CardView</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"120dp"</span></div><div class="line">    <span class="attr">android:layout_marginBottom</span>=<span class="string">"2dp"</span></div><div class="line">    <span class="attr">android:layout_marginLeft</span>=<span class="string">"5dp"</span></div><div class="line">    <span class="attr">android:layout_marginRight</span>=<span class="string">"5dp"</span></div><div class="line">    <span class="attr">android:layout_marginTop</span>=<span class="string">"2dp"</span></div><div class="line">    <span class="attr">app:cardCornerRadius</span>=<span class="string">"5dp"</span></div><div class="line">    <span class="attr">app:elevation</span>=<span class="string">"1dp"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/news_swipe_item_container"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"174dp"</span></div><div class="line">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span></div><div class="line">        <span class="attr">android:padding</span>=<span class="string">"5dp"</span>&gt;</div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/news_swipe_item_title"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"0dp"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"104dp"</span></div><div class="line">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></div><div class="line">            <span class="attr">android:gravity</span>=<span class="string">"left|center_vertical"</span></div><div class="line">            <span class="attr">android:textSize</span>=<span class="string">"21sp"</span></div><div class="line">            <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical|right"</span> /&gt;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/news_swipe_item_icon"</span></div><div class="line">            <span class="attr">android:layout_width</span>=<span class="string">"90dp"</span></div><div class="line">            <span class="attr">android:layout_height</span>=<span class="string">"90dp"</span></div><div class="line">            <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical|right"</span> /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/news_title_time"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"2016_1_1"</span></div><div class="line">        <span class="attr">android:textSize</span>=<span class="string">"20dp"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">android.support.v7.widget.CardView</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">   <span class="keyword">private</span> RecyclerView mRecyclerView;</div><div class="line">    <span class="keyword">private</span> List&lt;News&gt; mdatas=<span class="keyword">new</span> ArrayList&lt;News&gt;();</div><div class="line"><span class="keyword">private</span> String time_0,title_0,picUrl_0,url_0,time_1,title_1,picUrl_1,url_1,time_2,title_2,picUrl_2,url_2,time_3,title_3,picUrl_3,url_3,time_4,title_4,picUrl_4,url_4,time_5,title_5,picUrl_5,url_5,time_6,title_6,picUrl_6,url_6,time_7,title_7,picUrl_7,url_7;</div><div class="line"> <span class="keyword">private</span> SwipeRefreshLayout swipeRefreshLayout;</div><div class="line">    <span class="keyword">protected</span> ImageLoader imageLoader = ImageLoader.getInstance();</div><div class="line">    <span class="keyword">private</span> DisplayImageOptions options;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.news_layout);</div><div class="line">        initUI();</div><div class="line"></div><div class="line">        News new0=<span class="keyword">new</span> News(time_0,title_0,picUrl_0);</div><div class="line">        News new1=<span class="keyword">new</span> News(time_1,title_1,picUrl_1);</div><div class="line">        News new2=<span class="keyword">new</span> News(time_2,title_2,picUrl_2);</div><div class="line">        News new3=<span class="keyword">new</span> News(time_3,title_3,picUrl_3);</div><div class="line">        News new4=<span class="keyword">new</span> News(time_4,title_4,picUrl_5);</div><div class="line">        News new5=<span class="keyword">new</span> News(time_5,title_5,picUrl_5);</div><div class="line">        News new6=<span class="keyword">new</span> News(time_6,title_6,picUrl_6);</div><div class="line">        News new7=<span class="keyword">new</span> News(time_7,title_7,picUrl_7);</div><div class="line"></div><div class="line">        mdatas.add(new0);</div><div class="line">        mdatas.add(new1);</div><div class="line">        mdatas.add(new2);</div><div class="line">        mdatas.add(new3);</div><div class="line">        mdatas.add(new4);</div><div class="line">        mdatas.add(new5);</div><div class="line">        mdatas.add(new6);</div><div class="line">        mdatas.add(new7);</div><div class="line"></div><div class="line"></div><div class="line">        NewsAdapter mAdapter=<span class="keyword">new</span> NewsAdapter(NewsActivity.<span class="keyword">this</span>, mdatas);</div><div class="line">        mRecyclerView.setAdapter(mAdapter);</div><div class="line"></div><div class="line"></div><div class="line">        swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipRefresh);</div><div class="line">        <span class="comment">//改变加载显示的颜色</span></div><div class="line">        swipeRefreshLayout.setColorSchemeColors(R.color.swipe_color_1,R.color.swipe_color_2);</div><div class="line"></div><div class="line">        <span class="comment">//设置初始时的大小</span></div><div class="line">        swipeRefreshLayout.setSize(SwipeRefreshLayout.LARGE);</div><div class="line"></div><div class="line">        <span class="comment">//设置向下拉多少出现刷新</span></div><div class="line">        swipeRefreshLayout.setDistanceToTriggerSync(<span class="number">100</span>);</div><div class="line">        <span class="comment">//设置刷新出现的位置</span></div><div class="line">        swipeRefreshLayout.setProgressViewEndTarget(<span class="keyword">false</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        <span class="comment">//设置监听</span></div><div class="line">        swipeRefreshLayout.setOnRefreshListener(<span class="keyword">new</span> SwipeRefreshLayout.OnRefreshListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span> </span>&#123;</div><div class="line">                mdatas.clear();</div><div class="line"></div><div class="line">                News new0 = <span class="keyword">new</span> News(time_0, title_0, picUrl_0);</div><div class="line">                News new1 = <span class="keyword">new</span> News(time_1, title_1, picUrl_1);</div><div class="line">                News new2 = <span class="keyword">new</span> News(time_2, title_2, picUrl_2);</div><div class="line">                News new3 = <span class="keyword">new</span> News(time_3, title_3, picUrl_3);</div><div class="line">                News new4 = <span class="keyword">new</span> News(time_4, title_4, picUrl_5);</div><div class="line">                News new5 = <span class="keyword">new</span> News(time_5, title_5, picUrl_5);</div><div class="line">                News new6 = <span class="keyword">new</span> News(time_6, title_6, picUrl_6);</div><div class="line">                News new7 = <span class="keyword">new</span> News(time_7, title_7, picUrl_7);</div><div class="line"></div><div class="line">                mdatas.add(new0);</div><div class="line">                mdatas.add(new1);</div><div class="line">                mdatas.add(new2);</div><div class="line">                mdatas.add(new3);</div><div class="line">                mdatas.add(new4);</div><div class="line">                mdatas.add(new5);</div><div class="line">                mdatas.add(new6);</div><div class="line">                mdatas.add(new7);</div><div class="line"></div><div class="line"></div><div class="line">                swipeRefreshLayout.setRefreshing(<span class="keyword">false</span>);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">//Toolbar设置</span></div><div class="line">        android.support.v7.widget.Toolbar traffic_toolbar=(android.support.v7.widget.Toolbar) findViewById(R.id.news_toolbar);</div><div class="line">        traffic_toolbar.setTitle(<span class="string">"校园新闻(仅演示功能)"</span>);</div><div class="line">        <span class="comment">//  traffic_toolbar.setNavigationIcon(android.R.id.home);</span></div><div class="line">        setSupportActionBar(traffic_toolbar);</div><div class="line">        traffic_toolbar.setNavigationIcon(R.drawable.abc_ic_ab_back_mtrl_am_alpha);</div><div class="line">        traffic_toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123; <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span></div><div class="line">        &#123;   onBackPressed();</div><div class="line">        &#125; &#125;);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initUI</span><span class="params">()</span></span>&#123;</div><div class="line">    mRecyclerView=(RecyclerView)findViewById(R.id.news_RV_list);</div><div class="line">    mRecyclerView.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>));</div><div class="line"></div><div class="line"></div><div class="line">    apiTest();</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">apiTest</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        Parameters para = <span class="keyword">new</span> Parameters();</div><div class="line">        para.put(<span class="string">"num"</span>, <span class="string">"10"</span>);</div><div class="line"></div><div class="line">        ApiStoreSDK.execute(<span class="string">"http://apis.baidu.com/txapi/social/social"</span>,</div><div class="line">                ApiStoreSDK.GET,</div><div class="line">                para,</div><div class="line">                <span class="keyword">new</span> ApiCallBack() &#123;</div><div class="line"></div><div class="line">                    <span class="meta">@Override</span></div><div class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">(<span class="keyword">int</span> status, String responseString)</span> </span>&#123;</div><div class="line">                        Log.i(<span class="string">"sdkdemo"</span>, <span class="string">"onSuccess"</span>);</div><div class="line">                        NewsUtility.handleNewsResponse(NewsActivity.<span class="keyword">this</span>,responseString);</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line">        showNews();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showNews</span><span class="params">()</span></span>&#123;</div><div class="line">    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(<span class="keyword">this</span>);</div><div class="line">    time_0=prefs.getString(<span class="string">"time_0"</span>,<span class="string">""</span>);</div><div class="line">    title_0=prefs.getString(<span class="string">"title_0"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_0=prefs.getString(<span class="string">"picUrl_0"</span>,<span class="string">""</span>);</div><div class="line">    url_0=prefs.getString(<span class="string">"url_0"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_1=prefs.getString(<span class="string">"time_1"</span>,<span class="string">""</span>);</div><div class="line">    title_1=prefs.getString(<span class="string">"title_1"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_1=prefs.getString(<span class="string">"picUrl_1"</span>,<span class="string">""</span>);</div><div class="line">    url_1=prefs.getString(<span class="string">"url_1"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_2=prefs.getString(<span class="string">"time_2"</span>,<span class="string">""</span>);</div><div class="line">    title_2=prefs.getString(<span class="string">"title_2"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_2=prefs.getString(<span class="string">"picUrl_2"</span>,<span class="string">""</span>);</div><div class="line">    url_2=prefs.getString(<span class="string">"url_2"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_3=prefs.getString(<span class="string">"time_3"</span>,<span class="string">""</span>);</div><div class="line">    title_3=prefs.getString(<span class="string">"title_3"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_3=prefs.getString(<span class="string">"picUrl_3"</span>,<span class="string">""</span>);</div><div class="line">    url_3=prefs.getString(<span class="string">"url_3"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_4=prefs.getString(<span class="string">"time_4"</span>,<span class="string">""</span>);</div><div class="line">    title_4=prefs.getString(<span class="string">"title_4"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_4=prefs.getString(<span class="string">"picUrl_4"</span>,<span class="string">""</span>);</div><div class="line">    url_4=prefs.getString(<span class="string">"url_4"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_5=prefs.getString(<span class="string">"time_5"</span>,<span class="string">""</span>);</div><div class="line">    title_5=prefs.getString(<span class="string">"title_5"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_5=prefs.getString(<span class="string">"picUrl_5"</span>,<span class="string">""</span>);</div><div class="line">    url_5=prefs.getString(<span class="string">"url_5"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_6=prefs.getString(<span class="string">"time_6"</span>,<span class="string">""</span>);</div><div class="line">    title_6=prefs.getString(<span class="string">"title_6"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_6=prefs.getString(<span class="string">"picUrl_6"</span>,<span class="string">""</span>);</div><div class="line">    url_6=prefs.getString(<span class="string">"url_6"</span>,<span class="string">""</span>);</div><div class="line"></div><div class="line">    time_7=prefs.getString(<span class="string">"time_7"</span>,<span class="string">""</span>);</div><div class="line">    title_7=prefs.getString(<span class="string">"title_7"</span>,<span class="string">""</span>);</div><div class="line">    picUrl_7=prefs.getString(<span class="string">"picUrl_7"</span>,<span class="string">""</span>);</div><div class="line">    url_7=prefs.getString(<span class="string">"url_7"</span>,<span class="string">""</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">News</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String news_title;</div><div class="line">    <span class="keyword">private</span> String news_pic;</div><div class="line">    <span class="keyword">private</span> String news_time;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">News</span><span class="params">(String time,String title,String pic)</span></span>&#123;</div><div class="line">    news_time=time;</div><div class="line">     news_title=title;</div><div class="line">        news_pic=pic;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNews_time</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> news_time;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> news_title;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNews_pic</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> news_pic;&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsUtility</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">handleNewsResponse</span><span class="params">(Context context, String response)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            JSONObject jsonObject = <span class="keyword">new</span> JSONObject(response);</div><div class="line">            JSONArray jsonArray_newslist = jsonObject.getJSONArray(<span class="string">"newslist"</span>);</div><div class="line">            JSONObject jsonNews_0 = (JSONObject) jsonArray_newslist.get(<span class="number">0</span>);</div><div class="line">            String news_0_ctime = jsonNews_0.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_0_title = jsonNews_0.getString(<span class="string">"title"</span>);</div><div class="line">            String news_0_picUrl = jsonNews_0.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_0_Url = jsonNews_0.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_1 = (JSONObject) jsonArray_newslist.get(<span class="number">1</span>);</div><div class="line">            String news_1_ctime = jsonNews_1.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_1_title = jsonNews_1.getString(<span class="string">"title"</span>);</div><div class="line">            String news_1_picUrl = jsonNews_1.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_1_Url = jsonNews_1.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_2 = (JSONObject) jsonArray_newslist.get(<span class="number">2</span>);</div><div class="line">            String news_2_ctime = jsonNews_2.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_2_title = jsonNews_2.getString(<span class="string">"title"</span>);</div><div class="line">            String news_2_picUrl = jsonNews_2.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_2_Url = jsonNews_2.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_3 = (JSONObject) jsonArray_newslist.get(<span class="number">3</span>);</div><div class="line">            String news_3_ctime = jsonNews_3.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_3_title = jsonNews_3.getString(<span class="string">"title"</span>);</div><div class="line">            String news_3_picUrl = jsonNews_3.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_3_Url = jsonNews_3.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_4 = (JSONObject) jsonArray_newslist.get(<span class="number">4</span>);</div><div class="line">            String news_4_ctime = jsonNews_4.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_4_title = jsonNews_4.getString(<span class="string">"title"</span>);</div><div class="line">            String news_4_picUrl = jsonNews_4.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_4_Url = jsonNews_4.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_5 = (JSONObject) jsonArray_newslist.get(<span class="number">5</span>);</div><div class="line">            String news_5_ctime = jsonNews_5.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_5_title = jsonNews_5.getString(<span class="string">"title"</span>);</div><div class="line">            String news_5_picUrl = jsonNews_5.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_5_Url = jsonNews_5.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line"></div><div class="line">            JSONObject jsonNews_6 = (JSONObject) jsonArray_newslist.get(<span class="number">6</span>);</div><div class="line">            String news_6_ctime = jsonNews_6.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_6_title = jsonNews_6.getString(<span class="string">"title"</span>);</div><div class="line">            String news_6_picUrl = jsonNews_6.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_6_Url = jsonNews_6.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            JSONObject jsonNews_7 = (JSONObject) jsonArray_newslist.get(<span class="number">7</span>);</div><div class="line">            String news_7_ctime = jsonNews_7.getString(<span class="string">"ctime"</span>);</div><div class="line">            String news_7_title = jsonNews_7.getString(<span class="string">"title"</span>);</div><div class="line">            String news_7_picUrl = jsonNews_7.getString(<span class="string">"picUrl"</span>);</div><div class="line">            String news_7_Url = jsonNews_7.getString(<span class="string">"url"</span>);</div><div class="line"></div><div class="line">            saveNewsinfo(context, news_0_ctime, news_0_title, news_0_picUrl, news_0_Url,</div><div class="line">                    news_1_ctime,news_1_title,news_1_picUrl,news_1_Url,</div><div class="line">                    news_2_ctime,news_2_title,news_2_picUrl,news_2_Url,</div><div class="line">                    news_3_ctime,news_3_title,news_3_picUrl,news_3_Url,</div><div class="line">                    news_4_ctime,news_4_title,news_4_picUrl,news_4_Url,</div><div class="line">                    news_5_ctime,news_5_title,news_5_picUrl,news_5_Url,</div><div class="line">                    news_6_ctime,news_6_title,news_6_picUrl,news_6_Url,</div><div class="line">                    news_7_ctime,news_7_title,news_7_picUrl,news_7_Url);</div><div class="line">        &#125; <span class="keyword">catch</span> (JSONException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">saveNewsinfo</span><span class="params">(Context context, String time_0, String title_0, String picUrl_0, String url_0,</span></span></div><div class="line">                                    String time_1, String title_1, String picUrl_1, String url_1,</div><div class="line">                                    String time_2, String title_2, String picUrl_2, String url_2,</div><div class="line">                                    String time_3, String title_3, String picUrl_3, String url_3,</div><div class="line">                                    String time_4, String title_4, String picUrl_4, String url_4,</div><div class="line">                                    String time_5, String title_5, String picUrl_5, String url_5,</div><div class="line">                                    String time_6, String title_6, String picUrl_6, String url_6,</div><div class="line">                                    String time_7, String title_7, String picUrl_7, String url_7) &#123;</div><div class="line">        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();</div><div class="line">editor.putString(<span class="string">"time_0"</span>,time_0);</div><div class="line">        editor.putString(<span class="string">"title_0"</span>,title_0);</div><div class="line">        editor.putString(<span class="string">"picUrl_0"</span>,picUrl_0);</div><div class="line">        editor.putString(<span class="string">"url_0"</span>,url_0);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_1"</span>,time_1);</div><div class="line">        editor.putString(<span class="string">"title_1"</span>,title_1);</div><div class="line">        editor.putString(<span class="string">"picUrl_1"</span>,picUrl_1);</div><div class="line">        editor.putString(<span class="string">"url_1"</span>,url_1);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_2"</span>,time_2);</div><div class="line">        editor.putString(<span class="string">"title_2"</span>,title_2);</div><div class="line">        editor.putString(<span class="string">"picUrl_2"</span>,picUrl_2);</div><div class="line">        editor.putString(<span class="string">"url_2"</span>,url_2);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_3"</span>,time_3);</div><div class="line">        editor.putString(<span class="string">"title_3"</span>,title_3);</div><div class="line">        editor.putString(<span class="string">"picUrl_3"</span>,picUrl_3);</div><div class="line">        editor.putString(<span class="string">"url_3"</span>,url_3);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_4"</span>,time_4);</div><div class="line">        editor.putString(<span class="string">"title_4"</span>,title_4);</div><div class="line">        editor.putString(<span class="string">"picUrl_4"</span>,picUrl_4);</div><div class="line">        editor.putString(<span class="string">"url_4"</span>,url_4);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_5"</span>,time_5);</div><div class="line">        editor.putString(<span class="string">"title_5"</span>,title_5);</div><div class="line">        editor.putString(<span class="string">"picUrl_5"</span>,picUrl_5);</div><div class="line">        editor.putString(<span class="string">"url_5"</span>,url_5);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_6"</span>,time_6);</div><div class="line">        editor.putString(<span class="string">"title_6"</span>,title_6);</div><div class="line">        editor.putString(<span class="string">"picUrl_6"</span>,picUrl_6);</div><div class="line">        editor.putString(<span class="string">"url_6"</span>,url_6);</div><div class="line"></div><div class="line">        editor.putString(<span class="string">"time_7"</span>,time_7);</div><div class="line">        editor.putString(<span class="string">"title_7"</span>,title_7);</div><div class="line">        editor.putString(<span class="string">"picUrl_7"</span>,picUrl_7);</div><div class="line">        editor.putString(<span class="string">"url_7"</span>,url_7);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        editor.commit();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewsAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">NewsAdapter</span>.<span class="title">NormalItemHolder</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> ImageLoader imageLoader = ImageLoader.getInstance();</div><div class="line">    <span class="keyword">private</span> DisplayImageOptions options;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Context mContext;</div><div class="line">    <span class="keyword">private</span> List&lt;News&gt; mDataList;</div><div class="line"> <span class="keyword">private</span> LayoutInflater mLayoutInflater;</div><div class="line">    <span class="keyword">private</span> News news;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">NewsAdapter</span><span class="params">(Context mContext1, List&lt;News&gt; mDataList1)</span> </span>&#123;</div><div class="line">     mContext = mContext1;</div><div class="line">       mDataList = mDataList1;</div><div class="line">        mLayoutInflater = LayoutInflater.from(mContext);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//这个方法主要生成为每个Item inflater出一个View，但是该方法返回的是一个ViewHolder。</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> NormalItemHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup viewGroup, <span class="keyword">int</span> i)</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">        View view = mLayoutInflater.inflate(R.layout.news_item,viewGroup, <span class="keyword">false</span>);</div><div class="line">        NormalItemHolder holder= <span class="keyword">new</span> NormalItemHolder(view);</div><div class="line">        <span class="keyword">return</span> holder;</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 这个方法主要用于适配渲染数据到View中。</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(NormalItemHolder viewHolder,<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">       news= mDataList.get(position);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == news)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">            viewHolder.newsTime.setText(news.getNews_time());</div><div class="line">            viewHolder.newsTitle.setText(news.getTitle());</div><div class="line">            <span class="comment">// 使用DisplayImageOptions.Builder()创建DisplayImageOptions</span></div><div class="line">            options = <span class="keyword">new</span> DisplayImageOptions.Builder()</div><div class="line">                    .showImageOnLoading(R.drawable.newspic_loading) <span class="comment">// 设置图片下载期间显示的图片</span></div><div class="line">                    .showImageForEmptyUri(R.drawable.newspic_emptyuri) <span class="comment">// 设置图片Uri为空或是错误的时候显示的图片</span></div><div class="line">                    .showImageOnFail(R.drawable.newspic_fail) <span class="comment">// 设置图片加载或解码过程中发生错误显示的图片</span></div><div class="line">                    .cacheInMemory(<span class="keyword">true</span>) <span class="comment">// 设置下载的图片是否缓存在内存中</span></div><div class="line">                    .cacheOnDisk(<span class="keyword">true</span>) <span class="comment">// 设置下载的图片是否缓存在SD卡中</span></div><div class="line">                   <span class="comment">// .displayer(new RoundedBitmapDisplayer(10)) // 设置成圆角图片</span></div><div class="line">                    .build(); <span class="comment">// 构建完成</span></div><div class="line"></div><div class="line">            ImageLoader.getInstance().displayImage(news.getNews_pic(),viewHolder.newsIcon,options);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//得到所需Item数量</span></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">     <span class="keyword">return</span>  mDataList.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalItemHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line">        TextView newsTitle,newsTime;</div><div class="line">        ImageView newsIcon;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">NormalItemHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">            <span class="keyword">super</span>(itemView);</div><div class="line">            newsTime=(TextView)itemView.findViewById(R.id.news_title_time);</div><div class="line">            newsTitle = (TextView) itemView.findViewById(R.id.news_swipe_item_title);</div><div class="line">            newsIcon = (ImageView) itemView.findViewById(R.id.news_swipe_item_icon);</div><div class="line">            itemView.findViewById(R.id.news_swipe_item_container).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">                <span class="meta">@Override</span></div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/16/2016-11-16/" class="archive-article-date">
+  	<time datetime="2016-11-16T08:03:17.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/06/2016-11-6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">『持续更新』Android Layout：XML各布局常用属性大杂烩</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/android开发/" style="font-size: 20px;">android开发</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">android自学开发者，目前在东北某小城市念书。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
