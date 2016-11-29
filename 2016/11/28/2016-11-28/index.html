@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android自定义View基础内容学习笔记(一) | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UI控件作为手机操作系统中的一部分，一直被很多开发者视为开发中最重要的一环，一个精简美观的UI界面可以极大的提高用户体验以达到软件设计目的。在Android中，Google已经为开发者提供了丰富的组件库来满足客户需求，但千篇一律的UI样式确实容易引起审美疲劳，于是自定义控件开始被广大开发者所关注。想设计一个好的自定义控件除了需要掌握必要额API知识外，也需要结合其它的绘图技巧，例如Photosho">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android自定义View基础内容学习笔记(一)">
+<meta property="og:url" content="https://popo1379.github.io/2016/11/28/2016-11-28/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="UI控件作为手机操作系统中的一部分，一直被很多开发者视为开发中最重要的一环，一个精简美观的UI界面可以极大的提高用户体验以达到软件设计目的。在Android中，Google已经为开发者提供了丰富的组件库来满足客户需求，但千篇一律的UI样式确实容易引起审美疲劳，于是自定义控件开始被广大开发者所关注。想设计一个好的自定义控件除了需要掌握必要额API知识外，也需要结合其它的绘图技巧，例如Photosho">
+<meta property="og:image" content="https://popo1379.github.io/\Img\2016-11-28.png">
+<meta property="og:updated_time" content="2016-11-29T13:31:21.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android自定义View基础内容学习笔记(一)">
+<meta name="twitter:description" content="UI控件作为手机操作系统中的一部分，一直被很多开发者视为开发中最重要的一环，一个精简美观的UI界面可以极大的提高用户体验以达到软件设计目的。在Android中，Google已经为开发者提供了丰富的组件库来满足客户需求，但千篇一律的UI样式确实容易引起审美疲劳，于是自定义控件开始被广大开发者所关注。想设计一个好的自定义控件除了需要掌握必要额API知识外，也需要结合其它的绘图技巧，例如Photosho">
+<meta name="twitter:image" content="https://popo1379.github.io/\Img\2016-11-28.png">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">秩序之外 混沌之中</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">秩序之外 混沌之中</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-11-28" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android自定义View基础内容学习笔记(一)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>UI控件作为手机操作系统中的一部分，一直被很多开发者视为开发中最重要的一环，一个精简美观的UI界面可以极大的提高用户体验以达到软件设计目的。在Android中，Google已经为开发者提供了丰富的组件库来满足客户需求，<br>但千篇一律的UI样式确实容易引起审美疲劳，于是自定义控件开始被广大开发者所关注。想设计一个好的自定义控件除了需要掌握必要额API知识外，也需要结合其它的绘图技巧，例如Photoshop等。<br>本文将简略阐述自定义控件开发中的一些要点帮助我们日后更方便的理解开发自定义控件。</p>
+<p>View定义了绘图的基本操作，因此自定义控件时需要继承View,通过View中的几个基本方法完成自定义控件。</p>
+<a id="more"></a>
+<p>1.onDraw()</p>
+<p>自定义控件时，我们需要重写onDraw()方法绘制View内容，在View中onDraw()是一个空方法，因此我们需要覆写该方法同时加入自己的逻辑以实现该方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span></span>&#123;</div><div class="line"><span class="comment">//绘制内容前</span></div><div class="line"><span class="keyword">super</span>.onDraw(canvas);</div><div class="line"><span class="comment">//绘制内容后</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在该方法中，程序通过super.onDraw(canvas)方法来实现原生控件的功能，我们在该方法前写的逻辑将在加载控件前完成，之后同理，举个例子，我们自定义一个文字输入框，如果需要自定义输入框的样式，背景，则需要在super.onDraw(canvas)<br>前写入响应的逻辑。如果我们需要给输入框内输入的文字添加动态样式等，则需要在super.onDraw(canvas)方法后写入逻辑，这部分很好理解。</p>
+<p>2.onMeasure()</p>
+<p>该方法用于对控件进行测量，说白了，控件的大小就是由这个方法控制，下面我们来看看该方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> <span class="meta">@Override</span>  </div><div class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;  </div><div class="line">     <span class="comment">// 通过逻辑计算所需要的长和宽</span></div><div class="line">	 ....</div><div class="line">        setMeasuredDimension(width,height); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>首先我们看到这个方法需要传入的两个参数widthMeasureSpec和heightMeasureSpec，onMeasure()方法将被ViewGroup所调用，因此这两个参数也是从ViewGroup中传入，它们的作用是限制控件的大小。<br>后面的setMeasuredDimension()方法同样需要传入两个参数，需要注意的是在这个方法中传入的参数是控件最终的大小，也就是说，在该方法前所有的逻辑都是为最后这两个函数所服务的，我们的目的就是在该方法中折腾出你所需要的<br>width和height以确定空间大小。</p>
+<p>3.onLayout()</p>
+<p>前面两个函数已经决定了控件的绘图和大小，那么这个自然就是决定控件在ViewGroup所在的位置。在ViewGroup中，Layout的作用是确定整个页面View的位置，而如何确定位置则需要通过onLayout()方法去计算。<br>确定位置的方法很好理解，只需要只需要mLeft，mTop，mRight，mBottom四个值(注意：这4个值是子View相对于父View的值)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLayout</span><span class="params">(<span class="keyword">boolean</span> changed, <span class="keyword">int</span> left, <span class="keyword">int</span> top, <span class="keyword">int</span> right, <span class="keyword">int</span> bottom)</span> </span>&#123;</div><div class="line"> View view = getChildAt(i);  </div><div class="line"> <span class="comment">//通过逻辑计算所需要的mLeft, mTop, mRight, mBottom。</span></div><div class="line">.....</div><div class="line"> view.layout(mLeft, mTop, mRight, mBottom);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>除了这三个基本方法外，也有其它比较重要的回调方法</p>
+<p>onFinishInflate():从XML加载组件后回调<br>onSizeChanged():组件大小改变时回调<br>onMeasure():回调该方法进行测量<br>onLayout():回调该方法确定显示的位置<br>onTouchEvent():监听到触摸事件时回调</p>
+<p>下面让我们写一个简单的自定义控件演示步骤(使用hongyang博客内容，谢谢)：</p>
+<p>首先，我们需要在res目录下的values下创建文件attrs.xml，该文件用于定义控件的基本属性<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"DIYView"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"titleText"</span> <span class="attr">format</span>=<span class="string">"string"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"titleTextColor"</span> <span class="attr">format</span>=<span class="string">"color"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"titleTextSize"</span> <span class="attr">format</span>=<span class="string">"dimension"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们在代码中通过<declare-styleable>标签声明了使用自定义属性，在 <attr>标签声明了具体的自定义属性和名称，在这里我们定义了字体，颜色和字体大小三个属性<br>然后开始构建代码：</attr></declare-styleable></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiyView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String mTitleText;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTitleTextColor;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mTitleTextSize;</div><div class="line">  <span class="comment">//绘制时控制文本绘制的范围</span></div><div class="line">    <span class="keyword">private</span> Rect mBound;</div><div class="line">    <span class="keyword">private</span> Paint mPaint;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiyView</span><span class="params">(Context context, AttributeSet attrs)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">this</span>(context, attrs, <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiyView</span><span class="params">(Context context)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">this</span>(context, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获得我自定义的样式属性</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> context</div><div class="line">     * <span class="doctag">@param</span> attrs</div><div class="line">     * <span class="doctag">@param</span> defStyle</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiyView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyle)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">super</span>(context, attrs, defStyle);</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 获得我们所定义的自定义样式属性</div><div class="line">         */</div><div class="line">        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.DIYView, defStyle, <span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> n = a.getIndexCount();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> attr = a.getIndex(i);</div><div class="line">            <span class="keyword">switch</span> (attr)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">case</span> R.styleable.DIYView_titleText:</div><div class="line">                    mTitleText = a.getString(attr);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> R.styleable.DIYView_titleTextColor:</div><div class="line">                    <span class="comment">// 默认颜色设置为黑色</span></div><div class="line">                    mTitleTextColor = a.getColor(attr, Color.BLACK);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                <span class="keyword">case</span> R.styleable.DIYView_titleTextSize:</div><div class="line">                    <span class="comment">// 默认设置为16sp，TypeValue也可以把sp转化为px</span></div><div class="line">                    mTitleTextSize = a.getDimensionPixelSize(attr, (<span class="keyword">int</span>) TypedValue.applyDimension(</div><div class="line">                            TypedValue.COMPLEX_UNIT_SP, <span class="number">16</span>, getResources().getDisplayMetrics()));</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line"></div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        a.recycle();</div><div class="line"></div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 获得绘制文本的宽和高</div><div class="line">         */</div><div class="line">        mPaint = <span class="keyword">new</span> Paint();</div><div class="line">        mPaint.setTextSize(mTitleTextSize);</div><div class="line">        <span class="comment">// mPaint.setColor(mTitleTextColor);</span></div><div class="line">        mBound = <span class="keyword">new</span> Rect();</div><div class="line">        mPaint.getTextBounds(mTitleText, <span class="number">0</span>, mTitleText.length(), mBound);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span></span></div><div class="line">    &#123;</div><div class="line">        mPaint.setColor(Color.YELLOW);</div><div class="line">        canvas.drawRect(<span class="number">0</span>, <span class="number">0</span>, getMeasuredWidth(), getMeasuredHeight(), mPaint);</div><div class="line"></div><div class="line">        mPaint.setColor(mTitleTextColor);</div><div class="line">        canvas.drawText(mTitleText, getWidth() / <span class="number">2</span> - mBound.width() / <span class="number">2</span>, getHeight() / <span class="number">2</span> + mBound.height() / <span class="number">2</span>, mPaint);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后，我们再将控件加入到布局中：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">com.palmintelligence.administrator.diyview.DiyView</span></span></div><div class="line">      <span class="attr">android:layout_width</span>=<span class="string">"100dp"</span></div><div class="line">      <span class="attr">android:layout_height</span>=<span class="string">"100dp"</span></div><div class="line">      <span class="attr">custom:titleText</span>=<span class="string">"popo1379"</span></div><div class="line">      <span class="attr">custom:titleTextColor</span>=<span class="string">"#ff0000"</span></div><div class="line">      <span class="attr">custom:titleTextSize</span>=<span class="string">"40sp"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p><img src="\Img\2016-11-28.png" alt="1"></p>
+<p>除了自定义View外，也可以采用组合控件和继承控件的方法创建新的控件。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/28/2016-11-28/" class="archive-article-date">
+  	<time datetime="2016-11-28T11:43:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-28</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/23/2016-11-23/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android四大组件之Service(服务)基础知识（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/android开发/" style="font-size: 20px;">android开发</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">非科班Android自学开发者，目前在研究Native Android以及前端技术中。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
