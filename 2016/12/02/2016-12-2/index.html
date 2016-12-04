@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Android SQLite数据库使用指南 | popo的避风小港</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android SQLite数据库使用指南">
+<meta property="og:url" content="https://popo1379.github.io/2016/12/02/2016-12-2/index.html">
+<meta property="og:site_name" content="popo的避风小港">
+<meta property="og:description" content="SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。">
+<meta property="og:updated_time" content="2016-12-04T12:00:46.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android SQLite数据库使用指南">
+<meta name="twitter:description" content="SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。">
+  
+    <link rel="alternative" href="/atom.xml" title="popo的避风小港" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/blogImg/popo.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">popo1379</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">秩序之外 混沌之中</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">博客主页</a></li>
+	        
+				<li><a href="/tags/随笔">时光影像</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+		        
+					<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">popo1379</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/blogImg/popo.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">popo1379</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">秩序之外 混沌之中</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">博客主页</a></li>
+		        
+					<li><a href="/tags/随笔">时光影像</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/popo1379" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/2767611311/home?wvr=5&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/r-b-89" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-12-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android SQLite数据库使用指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。</p>
+<a id="more"></a>
+<p>一 创建数据库<br>Android专门提供了SQLiteOpenHelper类供我们创建和升级数据库，它的使用方法非常简单，下面让我们来看一看<br>首先，SQLiteOpenHelper是一个抽象类，它提供了两个抽象方法：onCreate()和onUpgrade(),在数据库继承SQLiteOpenHelper类时我们需要重写这两个方法以实现创建和升级数据库的逻辑。<br>另外，该类还有两个实例方法：getReadableDatabase()和getWritableDatabase(),这两个方法都可以创建或打开一个现有的数据库，并返回一个可对数据库进写读操作的对象，不同的是，当数据库不可写入时，getReadableDatabase()<br>可以正常以只读的方式打开数据库，而getWritableDatabase()将出现异常。</p>
+<p>下面，我们创建一个名为Student.db的数据库，然后在这个数据库中创建一个Stduent表，建表语句如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function">create table <span class="title">Student</span><span class="params">(</span></span></div><div class="line">StudentID integer,</div><div class="line">studentName text,</div><div class="line">math integer,</div><div class="line">chinese integer,</div><div class="line">english integer</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</div><div class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Student = <span class="string">"create table Student("</span></div><div class="line">                +<span class="string">"StudentID integer,"</span></div><div class="line">                +<span class="string">"studentName text,"</span></div><div class="line">                +<span class="string">"math integer,"</span></div><div class="line">                +<span class="string">"chinese integer,"</span></div><div class="line">                +<span class="string">"english integer)"</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Context mContext;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StudentHelper</span><span class="params">(Context context, String name, SQLiteDatabase.CursorFactory factory,<span class="keyword">int</span> version)</span></span>&#123;</div><div class="line">        <span class="keyword">super</span>(context,name,factory,version);</div><div class="line">        mContext=context;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span></span>&#123;</div><div class="line">        db.execSQL(Student);</div><div class="line">        Toast.makeText(mContext,<span class="string">"创建数据库成功"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion,<span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在主布局中添加一个按钮用于创建数据库<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/create_database"</span></div><div class="line">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">       <span class="attr">android:text</span>=<span class="string">"create_database"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>主活动代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> StudentHelper studentHelper;</div><div class="line">    <span class="keyword">private</span> Button create_btn;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        studentHelper = <span class="keyword">new</span> StudentHelper(<span class="keyword">this</span>,<span class="string">"Student.db"</span>,<span class="keyword">null</span>,<span class="number">1</span>);</div><div class="line"></div><div class="line">         create_btn=(Button) findViewById(R.id.create_database);</div><div class="line">        create_btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">                studentHelper.getWritableDatabase();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意！我们构建了一个StudentHelper对象，通过传入参数将数据库定名为”Student.db”，指定了版本号为1，然后在按钮监听事件中写入getWritableDatabase()方法用以操作数据库，当点击按钮时，系统将检测程序是否存在”student.db”数据库，第一次点击由于并没有数据库，系统将调用StudentHelper中的onCreate()方法创建数据库，此时我们的Toast将弹出以提示创建数据库成功。<br>再次点击，由于已经存在数据库，因此将不会调用onCreate()弹出Toast。</p>
+<p>二 升级数据库<br>在之前的代码中，我们注意到还有一个空方法onUpgrade还没有用，这个方法是用于对数据库进行升级的，下面我们更新一个新的建表语句：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function">create table <span class="title">StudentUp</span><span class="params">(</span></span></div><div class="line">		physics integer,</div><div class="line">		chemistry integer</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>加入数据库中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentHelper</span> <span class="keyword">extends</span> <span class="title">SQLiteOpenHelper</span> </span>&#123;</div><div class="line">       <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String Student = <span class="string">"create table Student("</span></div><div class="line">               +<span class="string">"StudentID integer,"</span></div><div class="line">               +<span class="string">"studentName text,"</span></div><div class="line">               +<span class="string">"math integer,"</span></div><div class="line">               +<span class="string">"chinese integer,"</span></div><div class="line">               +<span class="string">"english integer)"</span>;</div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String StudentUp= <span class="string">"create table StudentUp("</span></div><div class="line">           +<span class="string">"physics integer,"</span></div><div class="line">           +<span class="string">"chemistry integer)"</span>;</div><div class="line"></div><div class="line">       <span class="keyword">private</span> Context mContext;</div><div class="line"></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="title">StudentHelper</span><span class="params">(Context context, String name, SQLiteDatabase.CursorFactory factory,<span class="keyword">int</span> version)</span></span>&#123;</div><div class="line">           <span class="keyword">super</span>(context,name,factory,version);</div><div class="line">           mContext=context;</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(SQLiteDatabase db)</span></span>&#123;</div><div class="line">           db.execSQL(Student);</div><div class="line">           db.execSQL(StudentUp);</div><div class="line">           Toast.makeText(mContext,<span class="string">"创建数据库成功"</span>,Toast.LENGTH_SHORT).show();</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       <span class="meta">@Override</span></div><div class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onUpgrade</span><span class="params">(SQLiteDatabase db, <span class="keyword">int</span> oldVersion,<span class="keyword">int</span> newVersion)</span> </span>&#123;</div><div class="line">           <span class="comment">/**</span></div><div class="line">            * 我们在onUpgrade()方法中执行了两条DROP语句，如果在数据库中已经存在Student或StudentUp表，就会将表删除，然后再调用</div><div class="line">            * onCreate方法重新创建，因为如果在创建表时发现表已经存在，就会报错</div><div class="line">            */</div><div class="line">           db.execSQL(<span class="string">"drop table if exists Student"</span>);</div><div class="line">           db.execSQL(<span class="string">"drop table if exists StudentUp"</span>);</div><div class="line">           onCreate(db);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>接下来我们需要让onUpgrade方法得到执行，前面studentHelper = new StudentHelper(this,”Student.db”,null,1);这句代码里的第四个参数1，它代表当前数据库的版本号，之前我们传入了1，现在我们只需要传入一个比1大的数，就可以使onUpgrade()方法得到执行，因此我们将代码修改为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">studentHelper = <span class="keyword">new</span> StudentHelper(<span class="keyword">this</span>,<span class="string">"Student.db"</span>,<span class="keyword">null</span>,<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<p>三 添加数据<br>SQLiteDatabase中提供了一个insert()方法用于添加数据，它接收三个参数，第一个参数是表明，表示我们希望向哪个表添加数据，第二个参数用于在未指定添加数据的情况下给某些可为空的列自动赋值NULL，一般我们用不到这个功能所以直接传入null就OK了，第三个参数是一个ContentValues对象，它提供了一系列的put()方法重载，用于向ContentValues提供数据，下面我们修改代码：</p>
+<p>添加一个新的按钮用于添加数据：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span></span></div><div class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/addData"</span></div><div class="line">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">       <span class="attr">android:text</span>=<span class="string">"addData"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>在原代码添加下列逻辑<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Button add_btn=(Button) findViewById(R.id.addData);</div><div class="line">    add_btn.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</div><div class="line">            SQLiteDatabase db=studentHelper.getWritableDatabase();</div><div class="line">            ContentValues values=<span class="keyword">new</span> ContentValues();</div><div class="line">            values.put(<span class="string">"StudentID"</span>,<span class="number">1410912219</span>);</div><div class="line">            values.put(<span class="string">"studentName"</span>,<span class="string">"李四"</span>);</div><div class="line">            values.put(<span class="string">"math"</span>,<span class="number">86</span>);</div><div class="line">            values.put(<span class="string">"chinese"</span>,<span class="number">92</span>);</div><div class="line">            values.put(<span class="string">"english"</span>,<span class="number">72</span>);</div><div class="line">            db.insert(<span class="string">"Student"</span>,<span class="keyword">null</span>,values);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<p>这样，我们就成功添加数据到Student表中了，注意！如果要添加第二段数据，请先调用values.clear()清空ContentValues内的数据。</p>
+<p>四 更新数据<br>SQLiteDatabase中提供了一个update()方法用于对数据进行更新，这个方法接收四个参数，第一个参数是表名，第二个参数是ContentValues对象，要把更新数据在这里组装进去，第三第四个参数用来约束更新某一行或某几行中的数据，不指定的话默认就是更新所有行。</p>
+<p>逻辑代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SQLiteDatabase db=studentHelper.getWritableDatabase();</div><div class="line">              ContentValues values=<span class="keyword">new</span> ContentValues();</div><div class="line">		values.put(<span class="string">"math"</span>,<span class="number">65</span>);</div><div class="line">		db.update(<span class="string">"Student"</span>,values,<span class="string">"studentName=?"</span>,<span class="keyword">new</span> String[]&#123;<span class="string">"李四"</span>&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意，在这里我们将数学成绩更新为65分，第三个参数指定了名字等于？的行，第四个参数提供了一个字符串数组用于给第三个参数中的？提供响应的内容，这里我们的意思是给名字为李四的学生更新了数学成绩为65分。</p>
+<p>五，删除数据</p>
+<p>SQLiteDatabase提供了一个delete()方法用于删除数据，这个方法接收三个参数，第一个依旧为表名，第二三个参数用于约束某几行的数据，不指定则默认是删除所有行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SQLiteDatabase db=studentHelper.getWritableDatabase();</div><div class="line">db.delete(<span class="string">"Student"</span>,<span class="string">"studentName=?"</span>,<span class="keyword">new</span> String[]&#123;<span class="string">"李四"</span>&#125;);</div></pre></td></tr></table></figure></p>
+<p>和上面差不多，这里的意思是删除名为李四的学生的数据</p>
+<p>五 查询数据</p>
+<p>实际上，SQL数据库大部分的功能都是体现在查询上，由于查询功能的内容太多，这里只介绍Android上的查询功能,SQLiteDatabase提供了query()方法用于对数据进行查询，这个方法要传入七个参数，有点复杂。<br>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</p>
+<p>table：表名。相当于select语句from关键字后面的部分。如果是多表联合查询，可以用逗号将两个表名分开。</p>
+<p>columns：要查询出来的列名。相当于select语句select关键字后面的部分。</p>
+<p>selection：查询条件子句，相当于select语句where关键字后面的部分，在条件子句允许使用占位符“?”</p>
+<p>selectionArgs：对应于selection语句中占位符的值，值在数组中的位置与占位符在语句中的位置必须一致，否则就会有异常。</p>
+<p>groupBy：相当于select语句group by关键字后面的部分</p>
+<p>having：相当于select语句having关键字后面的部分</p>
+<p>orderBy：相当于select语句order by关键字后面的部分，如：personid desc, age asc;</p>
+<p>limit：指定偏移量和获取的记录数，相当于select语句limit关键字后面的部分。</p>
+<p>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">SQLiteDatabase db=studentHelper.getWritableDatabase();</div><div class="line">Cursor cursor=db.query(<span class="string">"Student"</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</div><div class="line"><span class="keyword">if</span>(cursor.moveToFirst())&#123;</div><div class="line"><span class="comment">//遍历Cursor对象</span></div><div class="line">do&#123;</div><div class="line">String studentID=cursor.getString(cursor.getColumnIndex(<span class="string">"StudentID"</span>));</div><div class="line">String studentName=cursor.getString(cursor.getColumnIndex(<span class="string">"studentName"</span>));</div><div class="line"><span class="keyword">int</span> math=cursor.getString(cursor.getColumnIndex(<span class="string">"math"</span>));</div><div class="line">&#125;(cursor.moveToNext());</div><div class="line">&#125;</div><div class="line">cursor.close();</div></pre></td></tr></table></figure></p>
+<p>这里的query()非常简单，我们查询Student表的所有数据，得到了一个Cursor对象，然后我们调用它的moveToFirst()方法将数据指针指向第一行，然后进入循环遍历数据直到最后一行，最后调用close()方法关闭Cursor对象。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/02/2016-12-2/" class="archive-article-date">
+  	<time datetime="2016-12-02T11:54:26.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android开发/">android开发</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/28/2016-11-28/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android自定义View基础内容学习笔记(一)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 popo1379
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/android开发/" style="font-size: 20px;">android开发</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/新世界/" style="font-size: 10px;">新世界</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接1</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接2</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接3</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接4</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接5</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">友情链接6</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">非科班Android自学开发者，目前在研究Native Android以及前端技术中。</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
