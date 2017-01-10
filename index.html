@@ -174,20 +174,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Activity作为Android四大组件之首，是我们开发使用过程中接触最为频繁的一种组件，Activity承担着与用户交互等最重要的功能，因此这里将全面分析Activity生命周期作为进阶的第一个重要知识。<br>1.正常情况下生命周期分析</p>
-<p>onCreate : 该方法表示Activity正在被创建，在这里，我们将进行一些初始化工作，如通过setContentView设置界面布局的资源，初始化所需要的组件信息等。<br>onStart : 此方法被回调时表示Activity正在启动，这时Activity已经可见了，但还没有出现在前台，我们可以理解为此时Activity已经准备就绪，但还没有在屏幕中显示出来<br>onResume : 当此方法回调时，则说明Activity已在前台可见，此时用户已经可以看见Activity并可以与之交互了，如此我们可以看作onStart时Activity还在后台，而onResume时Activity已经显示到了前台<br>onPause : 此方法被回调时则表示Activity正在停止，一般情况下onStop方法会紧接着被回调。但通过流程图我们还可以看到一种情况是onPause方法执行后直接执行了onResume方法，这属于比较极端的现象很难再现，此时onResume方法就会被回调。在onPause方法中我们可以做一些不耗时的逻辑，例如停止动画等。需要注意！！！onPause方法执行完成后，新Activity的onResume方法才会被执行，因此如果在onPause中添加耗时逻辑将影响新界面的生成。<br>onStop : 一般在onPause方法执行完成直接执行，表示Activity即将停止，此时Activity不可见，仅在后台运行。同样地，在onStop方法可以做一些资源释放的操作（不能太耗时）。<br>onRestart :表示Activity正在重新启动，当Activity由不可见变为可见状态时，该方法被回调。这种情况一般是用户打开了一个新的Activity时，当前的Activity就会被暂停（onPause和onStop被执行了），接着又回到当前Activity页面时，onRestart方法就会被回调。<br>onDestroy :此时Activity正在被销毁，也是生命周期最后一个执行的方法，我们可以在此方法中做一些回收工作和最终的资源释放。 </p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-10-1.png" alt="1"></p>
-<p>这里说明几种常见情况：<br>(1)当用户第一次启动Activity时，调用onCreate-&gt;onStart-&gt;onResume-&gt;正常运行<br>(2)当用户打开新Activity或回到桌面时调用onPause-&gt;onStop<br>(3)当用户回到该Activity时，调用onRestart-&gt;onStart-&gt;onResume-&gt;正常运行<br>(4)当用户使用返回键回退时，onPause-&gt;onStop-&gt;onDestroy，程序销毁，再次开启时按方法1重新调用函数运行</p>
-<p>2.异常情况下生命周期</p>
-<p>在Activity生命周期中，除了上述几种用户操作情况外，还有一些异常情况，最常见的异常情况主要为两种,一种是由于系统内存不足导致Android启动kill机制杀死进程防止卡死，另一种则是由于系统配置改变造成的异常情况，下面我们逐一进行分析</p>
-<p>首先我们先介绍两种新的方法：<br>onSaveInstanceState:用于在Activity销毁时保存Activity相关的对象信息<br>onRestoreInstanceState：被销毁的Activity重建时取出之前保存的信息</p>
-<p>实际上，系统调用这两种方法调用的场景有许多，例如HOME键退回桌面，电源键熄灭屏幕，屏幕切换Activity等，我们在上述情况下数据信息依然得意保留就是靠这两个方法。</p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-10-2.png" alt="2"></p>
-<p>(1)内存不足造成的异常情况<br>首先，我们要知道，Activity拥有优先级，优先级取决于Activity自身的状态<br>优先级：前台Activity&gt;可见的但非前台Activity&gt;后台Activity</p>
-<p>当系统内存不足时，系统就会按照优先级从小到大依次杀死目标进程，并在之后调用onSaveInstanceState和onRestoreInstanceState方法储存恢复数据信息。因此，许多后台工作不适合放在Activity中，我们应该使用Service放置后台，从而保证拥有较高的优先级而不被杀死</p>
-<p>(2)由于系统配置改变造成的异常情况</p>
-<p>系统配置异常情况，常见于竖屏手机横置，在默认情况下，Activity会销毁并重新创建，此时，系统将调用onSaveInstanceState方法保存当前的信息，例如当前的试图结构，文本框中的数据，列表滚动位置等等。</p>
-
+        <p>Activity作为Android四大组件之首，是我们开发使用过程中接触最为频繁的一种组件，Activity承担着与用户交互等最重要的功能，因此这里将全面分析Activity生命周期作为进阶的第一个重要知识。<br>
+        
+          <a class="article-more-a" href="/2017/01/10/2016-01-10/#more">more >></a>
+        
       
 
       
