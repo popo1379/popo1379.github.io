@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>popo1379的个人博客</title>
+  <title>Archives: 2017/1 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="popo1379的个人博客">
-<meta property="og:url" content="https://popo1379.github.io/index.html">
+<meta property="og:url" content="https://popo1379.github.io/archives/2017/01/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
 <meta property="og:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
 <meta name="twitter:card" content="summary">
@@ -154,47 +154,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2016-01-10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/10/2016-01-10/" class="archive-article-date">
+  	<time datetime="2017-01-10T03:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-10</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/10/2016-01-10/">Android开发进阶：探究Activity生命周期及异常情况分析</a>
+      <a class="archive-article-title" href="/2017/01/10/2016-01-10/">Android开发进阶：探究Activity生命周期及异常情况分析</a>
     </h1>
   
 
-        
-        <a href="/2017/01/10/2016-01-10/" class="archive-article-date">
-  	<time datetime="2017-01-10T03:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Activity作为Android四大组件之首，是我们开发使用过程中接触最为频繁的一种组件，Activity承担着与用户交互等最重要的功能，因此这里将全面分析Activity生命周期作为进阶的第一个重要知识。<br>1.正常情况下生命周期分析</p>
-<p>onCreate : 该方法表示Activity正在被创建，在这里，我们将进行一些初始化工作，如通过setContentView设置界面布局的资源，初始化所需要的组件信息等。<br>onStart : 此方法被回调时表示Activity正在启动，这时Activity已经可见了，但还没有出现在前台，我们可以理解为此时Activity已经准备就绪，但还没有在屏幕中显示出来<br>onResume : 当此方法回调时，则说明Activity已在前台可见，此时用户已经可以看见Activity并可以与之交互了，如此我们可以看作onStart时Activity还在后台，而onResume时Activity已经显示到了前台<br>onPause : 此方法被回调时则表示Activity正在停止，一般情况下onStop方法会紧接着被回调。但通过流程图我们还可以看到一种情况是onPause方法执行后直接执行了onResume方法，这属于比较极端的现象很难再现，此时onResume方法就会被回调。在onPause方法中我们可以做一些不耗时的逻辑，例如停止动画等。需要注意！！！onPause方法执行完成后，新Activity的onResume方法才会被执行，因此如果在onPause中添加耗时逻辑将影响新界面的生成。<br>onStop : 一般在onPause方法执行完成直接执行，表示Activity即将停止，此时Activity不可见，仅在后台运行。同样地，在onStop方法可以做一些资源释放的操作（不能太耗时）。<br>onRestart :表示Activity正在重新启动，当Activity由不可见变为可见状态时，该方法被回调。这种情况一般是用户打开了一个新的Activity时，当前的Activity就会被暂停（onPause和onStop被执行了），接着又回到当前Activity页面时，onRestart方法就会被回调。<br>onDestroy :此时Activity正在被销毁，也是生命周期最后一个执行的方法，我们可以在此方法中做一些回收工作和最终的资源释放。 </p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-10-1.png" alt="1"></p>
-<p>这里说明几种常见情况：<br>(1)当用户第一次启动Activity时，调用onCreate-&gt;onStart-&gt;onResume-&gt;正常运行<br>(2)当用户打开新Activity或回到桌面时调用onPause-&gt;onStop<br>(3)当用户回到该Activity时，调用onRestart-&gt;onStart-&gt;onResume-&gt;正常运行<br>(4)当用户使用返回键回退时，onPause-&gt;onStop-&gt;onDestroy，程序销毁，再次开启时按方法1重新调用函数运行</p>
-<p>2.异常情况下生命周期</p>
-<p>在Activity生命周期中，除了上述几种用户操作情况外，还有一些异常情况，最常见的异常情况主要为两种,一种是由于系统内存不足导致Android启动kill机制杀死进程防止卡死，另一种则是由于系统配置改变造成的异常情况，下面我们逐一进行分析</p>
-<p>首先我们先介绍两种新的方法：<br>onSaveInstanceState:用于在Activity销毁时保存Activity相关的对象信息<br>onRestoreInstanceState：被销毁的Activity重建时取出之前保存的信息</p>
-<p>实际上，系统调用这两种方法调用的场景有许多，例如HOME键退回桌面，电源键熄灭屏幕，屏幕切换Activity等，我们在上述情况下数据信息依然得意保留就是靠这两个方法。</p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-10-2.png" alt="2"></p>
-<p>(1)内存不足造成的异常情况<br>首先，我们要知道，Activity拥有优先级，优先级取决于Activity自身的状态<br>优先级：前台Activity&gt;可见的但非前台Activity&gt;后台Activity</p>
-<p>当系统内存不足时，系统就会按照优先级从小到大依次杀死目标进程，并在之后调用onSaveInstanceState和onRestoreInstanceState方法储存恢复数据信息。因此，许多后台工作不适合放在Activity中，我们应该使用Service放置后台，从而保证拥有较高的优先级而不被杀死</p>
-<p>(2)由于系统配置改变造成的异常情况</p>
-<p>系统配置异常情况，常见于竖屏手机横置，在默认情况下，Activity会销毁并重新创建，此时，系统将调用onSaveInstanceState方法保存当前的信息，例如当前的试图结构，文本框中的数据，列表滚动位置等等。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
@@ -206,615 +193,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/10/2016-01-10/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
-
-
-
   
-    <article id="post-2016-12-31" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/31/2016-12-31/">Hello my 2017</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/31/2016-12-31/" class="archive-article-date">
-  	<time datetime="2016-12-31T11:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在写这篇文章的时候，距离2017年还有4小时31分，2016年的进度条即将到达终点，逝去的时间不会重返，未来的生活依旧充满挑战与挫折，想总结这一年来的生活,学习，数年过后，再来看看，看看有没有遗憾，有没有忘记的人，忘记的事。</p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/278324-106.png" alt="0"><br>
-        
-          <a class="article-more-a" href="/2016/12/31/2016-12-31/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/31/2016-12-31/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-12-11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/2016-12-11/">Google开发者大会(北京)一日游实记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/11/2016-12-11/" class="archive-article-date">
-  	<time datetime="2016-12-11T14:26:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12月8日，Google在时隔5年后再一次在中国举办开发者大会，能参与在Google离开中国后第一次开发者大会，很激动能够见证这次盛会，把在现场的照片发出来，记录下来，留个纪念。<br><img src="http://oi1vkg8v3.bkt.clouddn.com/2016-12-11-0.png" alt="0"></p>
-        
-          <a class="article-more-a" href="/2016/12/11/2016-12-11/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/2016-12-11/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-12-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/2016-12-2/">Android SQLite数据库使用指南</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/2016-12-2/" class="archive-article-date">
-  	<time datetime="2016-12-02T11:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。</p>
-        
-          <a class="article-more-a" href="/2016/12/02/2016-12-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/2016-12-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-28" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/28/2016-11-28/">Android自定义View基础内容学习笔记(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/28/2016-11-28/" class="archive-article-date">
-  	<time datetime="2016-11-28T11:43:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>UI控件作为手机操作系统中的一部分，一直被很多开发者视为开发中最重要的一环，一个精简美观的UI界面可以极大的提高用户体验以达到软件设计目的。在Android中，Google已经为开发者提供了丰富的组件库来满足客户需求，<br>但千篇一律的UI样式确实容易引起审美疲劳，于是自定义控件开始被广大开发者所关注。想设计一个好的自定义控件除了需要掌握必要额API知识外，也需要结合其它的绘图技巧，例如Photoshop等。<br>本文将简略阐述自定义控件开发中的一些要点帮助我们日后更方便的理解开发自定义控件。</p>
-<p>View定义了绘图的基本操作，因此自定义控件时需要继承View,通过View中的几个基本方法完成自定义控件。</p>
-        
-          <a class="article-more-a" href="/2016/11/28/2016-11-28/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/28/2016-11-28/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/2016-11-23/">Android四大组件之Service(服务)基础知识（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/23/2016-11-23/" class="archive-article-date">
-  	<time datetime="2016-11-23T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Service是Android实现程序后台运行的解决方案，它主要用于在后台处理一些耗时的逻辑，或者去执行某些需要长期运行的任务。服务的最大特点<br>在于它不依赖于任何的用户界面，即使程序被切换到后台甚至在程序退出的情况下，Service依然能够保持正常运行。<br>本文将对Service组件中常用的知识点进行探究，作为学习中的一次笔记，方便日后查看。</p>
-        
-          <a class="article-more-a" href="/2016/11/23/2016-11-23/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/23/2016-11-23/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/16/2016-11-16/">开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/16/2016-11-16/" class="archive-article-date">
-  	<time datetime="2016-11-16T08:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等<br>各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出<br>来，以后有需求再回来看看。<br>一下是大牛们总结的特效：</p>
-<p>1.多线程下载图片，图片可以来源于网络，文件系统，项目文件夹assets中以及drawable中等<br>2.支持随意的配置ImageLoader，例如线程池，图片下载器，内存缓存策略，硬盘缓存策略，图片显示选项以及其他的一些配置<br>3.支持图片的内存缓存，文件系统缓存或者SD卡缓存<br>4.支持图片下载过程的监听<br>5.根据控件(ImageView)的大小对Bitmap进行裁剪，减少Bitmap占用过多的内存<br>6.较好的控制图片的加载过程，例如暂停图片加载，重新开始加载图片，一般使用在ListView,GridView中，滑动过程中暂停加载图片，停止滑动的时候去加载图片<br>7.提供在较慢的网络下对图片进行加载</p>
-        
-          <a class="article-more-a" href="/2016/11/16/2016-11-16/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/16/2016-11-16/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/06/2016-11-6/">『持续更新』Android Layout：XML各布局常用属性大杂烩</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/06/2016-11-6/" class="archive-article-date">
-  	<time datetime="2016-11-06T03:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。</p>
-<p>relativelayout布局（相对布局）：<br>android:layout_above 将该控件的底部至于给定ID的控件之上<br>android:layout_below 将该控件的顶部至于给定ID的控件之下<br>android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐<br>android:layout_toRightOf 将该控件的左边缘和给定ID的控件的右边缘对齐</p>
-<p>android:layout_alignBaseline 该控件的baseline和给定ID的控件的baseline对齐<br>android:layout_alignBottom 将该控件的底部边缘与给定ID控件的底部边缘对齐<br>android:layout_alignLeft 将该控件的左边缘与给定ID控件的左边缘对齐<br>android:layout_alignRight 将该控件的右边缘与给定ID控件的右边缘对齐<br>android:layout_alignTop 将给定控件的顶部边缘与给定ID控件的顶部对齐</p>
-        
-          <a class="article-more-a" href="/2016/11/06/2016-11-6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/06/2016-11-6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/04/2016-11-4/">Android开发：RecyclerView实现简单瀑布流效果</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/04/2016-11-4/" class="archive-article-date">
-  	<time datetime="2016-11-04T09:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RecyclerView是谷歌随着Android 5.0推出的全新控件，RecyclerView提供了一种拔插式的体验，相较于它的前代ListView具有低耦合，扩展性强的特点，现在越来越多的开发者放弃listView转而使用RecyclerView，<br>RecyclerView控件也可以实现更多更强大的功能，瀑布流就是其中的一种。</p>
-<p>前段时间想用listview实现一个非常简单电话薄功能，后来发现用瀑布流更美观更显目，完成后把代码发上来，就当一篇加深印象的学习笔记，日后有需求还可以来看看。</p>
-        
-          <a class="article-more-a" href="/2016/11/04/2016-11-4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/04/2016-11-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-10-27" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/27/2016-10-27/">Android开发之实现带小圆点的ViewPager导航</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/27/2016-10-27/" class="archive-article-date">
-  	<time datetime="2016-10-27T04:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，<br>相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依<br>旧可以利用现有控件实现这一功能。</p>
-        
-          <a class="article-more-a" href="/2016/10/27/2016-10-27/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/27/2016-10-27/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -836,9 +227,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
