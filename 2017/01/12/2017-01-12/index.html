@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>Archives: 2016/12 | popo1379的个人博客</title>
+  <title>Android开发进阶之Activity启动模式探究 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="popo1379的个人博客">
-<meta property="og:url" content="https://popo1379.github.io/archives/2016/12/index.html">
+  <meta name="description" content="在Android运行机制中，当你启动一个Activity时，系统会将这个Activity创建实例并放入任务栈中，不同的启动模式，将决定Activity启动方式的不同以及与任务栈之间的关系，设置一个恰当的启动模式将使用户体验得到质的飞跃。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发进阶之Activity启动模式探究">
+<meta property="og:url" content="https://popo1379.github.io/2017/01/12/2017-01-12/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
-<meta property="og:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta property="og:description" content="在Android运行机制中，当你启动一个Activity时，系统会将这个Activity创建实例并放入任务栈中，不同的启动模式，将决定Activity启动方式的不同以及与任务栈之间的关系，设置一个恰当的启动模式将使用户体验得到质的飞跃。">
+<meta property="og:image" content="http://oi1vkg8v3.bkt.clouddn.com/2017-01-12.png">
+<meta property="og:updated_time" content="2017-01-12T15:24:20.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="popo1379的个人博客">
-<meta name="twitter:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta name="twitter:title" content="Android开发进阶之Activity启动模式探究">
+<meta name="twitter:description" content="在Android运行机制中，当你启动一个Activity时，系统会将这个Activity创建实例并放入任务栈中，不同的启动模式，将决定Activity启动方式的不同以及与任务栈之间的关系，设置一个恰当的启动模式将使用户体验得到质的飞跃。">
+<meta name="twitter:image" content="http://oi1vkg8v3.bkt.clouddn.com/2017-01-12.png">
   
     <link rel="alternative" href="/atom.xml" title="popo1379的个人博客" type="application/atom+xml">
   
@@ -152,112 +155,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2017-01-12" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/31/2016-12-31/" class="archive-article-date">
-  	<time datetime="2016-12-31T11:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/31/2016-12-31/">Hello my 2017</a>
+    <h1 class="article-title" itemprop="name">
+      Android开发进阶之Activity启动模式探究
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
-      
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/11/2016-12-11/" class="archive-article-date">
-  	<time datetime="2016-12-11T14:26:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
+        
+        <a href="/2017/01/12/2017-01-12/" class="archive-article-date">
+  	<time datetime="2017-01-12T13:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/2016-12-11/">Google开发者大会(北京)一日游实记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-		</ul>
-	</div>
+        <p>在Android运行机制中，当你启动一个Activity时，系统会将这个Activity创建实例并放入任务栈中，不同的启动模式，将决定Activity启动方式的不同以及与任务栈之间的关系，设置一个恰当的启动模式将使用户体验得到质的飞跃。</p>
+<a id="more"></a>
+<p>任务栈(task stack)也叫退回栈，当我们使用返回键时，会发现页面会一一退回，因为任务栈是一种“后进先出”的结构，当我们按返回键时，Activity会一一出栈，直至全部出栈后系统回收任务栈。大部分情况下，一个应用程序拥有一个任务栈。</p>
+<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-12.png" alt="1"></p>
+<p>在Android中目前拥有4个启动模式，分别是standard、singleTop、singleTask以及singleInstance下面将一一介绍。</p>
+<p>(1)standard:标准模式，就是系统默认的启动模式，当我们不对Activity做任何设置时系统将默认使用标准模式，这个模式很好理解，就是每次启动Activity都将重新创建一个新的实例，不管这个实例是否存在，被创建的实例进行正常的生命周期情况，即onCreate-&gt;onStart-&gt;onResume.<br>在这种模式下，谁启动了这个Activity。这个Activity就存在于启动它的那个Activity的任务栈中，也就是说，我们在Activity A中启动了Activity B，这时B存在于A所在的任务栈中，此时任务栈结构为AB，这时如果我们再启动B，任务栈结构将为ABB。</p>
+<p>(2)singleTop：栈顶复用模式。在这种模式下，如果想要启动的Activity一经存在于任务栈顶端，那么启动时将不再重新创建，生命周期中的onCreate和onStart将不会调用。同时，它的onNewIntent方法将被回调，使用此方法我们将可以取出当前的请求信息。举个例子，栈内有Activity A和B C，C在栈顶为singleTop模式，<br>这时我们再启动C，C将不会被创建，栈结构依旧为ABC，但如果C启动模式为standard，这时再启动C，栈结构实际为ABCC，因为C被重新创建了。</p>
+<p>(3)singleTask:栈内复用模式。在这种情况下，只要Activity在一个栈内存在，那么再次启动该Activity将不会重新创建实例，并且系统也将回调onNewIntent。例如在此模式下启动一个Activity A，系统将先查看该任务栈内是否存在A，如果存在，将A调至栈顶并调用onNewIntent方法，如果没有A，则重新创建A。<br>需要注意的是，当A存在并调至栈顶的过程中，将会导致A上面的Activity被清出栈。</p>
+<p>(4)singleInstance:单实例模式。顾名思义，即任务栈中只存在有这一个Activity，如果存在，不调用，不存在则重新创建。特性类似singleTask。例如Activity A(假设任务栈为01)启动singleInstance模式的B，B将单独存在于任务栈02中，请注意，这时如果再通过B启动C，C启动模式不是singleInstance时，将自动归至任务栈01中。</p>
+<p>下面我们来介绍设置启动模式的两种方法：<br>第一种，在Manifest中设置启动模式：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=".MainActivity"</div><div class="line">          android:launchMode="singleTask"&gt;</div><div class="line">		   &lt;/activity&gt;</div></pre></td></tr></table></figure></p>
+<p>另一种则是在Intent中通过设置标志位指定启动模式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Intent intent=<span class="keyword">new</span> Intent();</div><div class="line">       intent.setClass(MainActivity.<span class="keyword">this</span>,SecondActivity.class);</div><div class="line">       intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">       startActivity(intent);</div></pre></td></tr></table></figure></p>
+<p>二者都可以设置启动模式，但仍有区别，首先优先级上第二种优先第一种，即如果通过上述两种方法设置了两个启动模式，系统以第二种为准，另外第二种方法无法设置singleInstance模式。</p>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/02/2016-12-2/" class="archive-article-date">
-  	<time datetime="2016-12-02T11:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/02/2016-12-2/">Android SQLite数据库使用指南</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
@@ -269,19 +206,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://popo1379.github.io/2017/01/12/2017-01-12/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/01/10/2016-01-10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android开发进阶：探究Activity生命周期及异常情况分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -304,8 +310,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
