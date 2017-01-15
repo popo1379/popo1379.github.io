@@ -6,23 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>『持续更新』Android Layout：XML各布局常用属性大杂烩 | popo1379的个人博客</title>
+  <title>性能优化：内存泄露常见案例及优化方案 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
-relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
+  <meta name="description" content="内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『持续更新』Android Layout：XML各布局常用属性大杂烩">
-<meta property="og:url" content="https://popo1379.github.io/2016/11/06/2016-11-6/index.html">
+<meta property="og:title" content="性能优化：内存泄露常见案例及优化方案">
+<meta property="og:url" content="https://popo1379.github.io/2017/01/15/2017-1-15/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
-<meta property="og:description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
-relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
-<meta property="og:image" content="https://popo1379.github.io/\Img\2016-11-10-0.png">
-<meta property="og:updated_time" content="2016-11-10T12:34:12.779Z">
+<meta property="og:description" content="内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到">
+<meta property="og:updated_time" content="2017-01-15T15:10:43.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『持续更新』Android Layout：XML各布局常用属性大杂烩">
-<meta name="twitter:description" content="本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。
-relativelayout布局（相对布局）：android:layout_above 将该控件的底部至于给定ID的控件之上android:layout_below 将该控件的顶部至于给定ID的控件之下android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐a">
-<meta name="twitter:image" content="https://popo1379.github.io/\Img\2016-11-10-0.png">
+<meta name="twitter:title" content="性能优化：内存泄露常见案例及优化方案">
+<meta name="twitter:description" content="内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到">
   
     <link rel="alternative" href="/atom.xml" title="popo1379的个人博客" type="application/atom+xml">
   
@@ -158,57 +153,35 @@ relativelayout布局（相对布局）：android:layout_above 将该控件的底
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2016-11-6" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017-1-15" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      『持续更新』Android Layout：XML各布局常用属性大杂烩
+      性能优化：内存泄露常见案例及优化方案
     </h1>
   
 
         
-        <a href="/2016/11/06/2016-11-6/" class="archive-article-date">
-  	<time datetime="2016-11-06T03:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-06</time>
+        <a href="/2017/01/15/2017-1-15/" class="archive-article-date">
+  	<time datetime="2017-01-15T12:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。</p>
-<p>relativelayout布局（相对布局）：<br>android:layout_above 将该控件的底部至于给定ID的控件之上<br>android:layout_below 将该控件的顶部至于给定ID的控件之下<br>android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐<br>android:layout_toRightOf 将该控件的左边缘和给定ID的控件的右边缘对齐</p>
-<p>android:layout_alignBaseline 该控件的baseline和给定ID的控件的baseline对齐<br>android:layout_alignBottom 将该控件的底部边缘与给定ID控件的底部边缘对齐<br>android:layout_alignLeft 将该控件的左边缘与给定ID控件的左边缘对齐<br>android:layout_alignRight 将该控件的右边缘与给定ID控件的右边缘对齐<br>android:layout_alignTop 将给定控件的顶部边缘与给定ID控件的顶部对齐</p>
+        <p>内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制<br>使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到了Android平台上，由于手机内存限制，内<br>存泄露所造成的影响更大，因此，解决内存泄露问题是程序员开发过程中必须要面对的问题。<br>如何解决内存泄露，一方面，需要避免在开发过程中写出造成内存泄露的代码逻辑。另一方面，则要通过专门的工具检测潜在的内存泄露并解决问题，在google的AndroidStudio中自带内存检查工具，同时我们也可以使用MAT这类插件排查问题。</p>
 <a id="more"></a>
-<p>android:alignParentBottom 如果该值为true，则将该控件的底部和父控件的底部对齐<br>android:layout_alignParentLeft 如果该值为true，则将该控件的左边与父控件的左边对齐<br>android:layout_alignParentRight 如果该值为true，则将该控件的右边与父控件的右边对齐<br>android:layout_alignParentTop 如果该值为true，则将空间的顶部与父控件的顶部对齐</p>
-<p>android:layout_centerHorizontal 如果值为真，该控件将被至于水平方向的中央<br>android:layout_centerInParent 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央<br>android:layout_centerVertical 如果值为真，该控件将被至于垂直方向的中央</p>
-<p>==========================================================================================</p>
-<p>LinearLayout布局（线性布局）：</p>
-<p>android:orientation<br>决定是水平排列或是垂直排列<br>vertical 垂直排列<br>horizontal 水平排列</p>
-<p>android:gravity<br>设定框架的内容的放置方向<br>center 水平垂直皆置中<br>center_vertical 垂直置中<br>center_horizontal 水平置中<br>top 置顶<br>left 置左<br>bottom 置底<br>right 置右</p>
-<p>android:layout_weight<br>子元件或子框架的比重。<br>LinearLayout 下的子元件或子框架，才能设定这项属性。当所有控件的值都设为1时，大小全部相同。</p>
-<p>android:layout_alignParentBottom=”true” alignparentbottom：是否显示在容器底部。 值为true 或者 false</p>
-<p>================================================================================================</p>
-<p>其它常用属性：</p>
-<p>background会根据ImageView组件给定的长宽进行拉伸，而src就存放的是原图的大小，不会进行拉伸。src是图片内容（前景），bg是背景，可以同时使用。<br>此外：scaleType只对src起作用；bg可设置透明度，比如在ImageButton中就可以用Android:scaleType控制图片的缩放方式。<br>scaleType常用属性：<br>CENTER /center 在视图中心显示图片，并且不缩放图片</p>
-<p>CENTER_CROP / centerCrop 按比例缩放图片，使得图片长 (宽)的大于等于视图的相应维度</p>
-<p>CENTER_INSIDE / centerInside 按比例缩放图片，使得图片长 (宽)的小于等于视图的相应维度</p>
-<p>FIT_CENTER / fitCenter 按比例缩放图片到视图的最小边，居中显示</p>
-<p>FIT_END / fitEnd 按比例缩放图片到视图的最小边，显示在视图的下部分位置</p>
-<p>FIT_START / fitStart 把图片按比例扩大/缩小到视图的最小边，显示在视图的上部分位置</p>
-<p>FIT_XY / fitXY 把图片不按比例缩放到视图的大小显示</p>
-<p>MATRIX / matrix 用矩阵来绘制</p>
-<p>==========================================================================================<br>EditText的android:hint </p>
-<p>设置EditText为空时输入框内的提示信息。 </p>
-<p>android:gravity　<br>android:gravity属性是对该view 内容的限定．比如一个button 上面的text.  你可以设置该text 在view的靠左，靠右等位置．以button为例，android:gravity=”right”则button上面的文字靠右 </p>
-<p>android:layout_gravity<br>android:layout_gravity是用来设置该view相对与起父view 的位置．比如一个button 在linearlayout里，你想把该button放在靠左、靠右等位置就可以通过该属性设置．以button为例，android:layout_gravity=”right”则button靠右 </p>
-<p>android:layout_alignParentRight<br>使当前控件的右端和父控件的右端对齐。这里属性值只能为true或false，默认false。 </p>
-<p>layout_margin就是设置view的上下左右边框的额外空间</p>
-<p>android:padding是设置内容相对view的边框的距离</p>
-<p><img src="\Img\2016-11-10-0.png" alt="1"></p>
-<p>未完待续</p>
+<p>1.静态变量造成的内存泄露：<br>这应该是初级开发者最容易遇到的错误，在Activity中加入了一个静态变量，它内部持有了当前的Activity对象，因此Activity无法被销毁<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Context context;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line">		setContentView(R.layout.activity_main);  </div><div class="line">		context = <span class="keyword">this</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>解决方案：<br>使用Application的Context,这里建议在开发前先做一个全局Context，免得到时候麻烦</p>
+<p>2.单例模式造成的内存泄露<br>单例模式的特点是其生命周期和Application一样长，如果一个单例对象1持有了一个对象2的引用，那么这个对象2就不能正常被回收，只能等和应用一起挂掉<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoManager</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> AppManager instance;</div><div class="line">    <span class="keyword">private</span> Context context;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DemoManager</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.context = context;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DemoManager <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (instance != <span class="keyword">null</span>) &#123;</div><div class="line">            instance = <span class="keyword">new</span> AppManager(context);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> instance;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>解决方案和上面一样，传入的Context直接Application的Context，别写Activity.</p>
+<p>3.使用Handlder不当造成的内存泄漏：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;  </div><div class="line">    <span class="meta">@Override</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;  </div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);  </div><div class="line">        setContentView(R.layout.activity_main);  </div><div class="line">        handler.sendMessageDelayed(Message.obtain(), <span class="number">60000</span>);  </div><div class="line">    </div><div class="line">        finish();  </div><div class="line">    &#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> Handler handler = <span class="keyword">new</span> Handler() &#123;  </div><div class="line">        <span class="meta">@Override</span>  </div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;  </div><div class="line">            <span class="comment">// 逻辑  </span></div><div class="line">        &#125;  </div><div class="line">    &#125;;</div></pre></td></tr></table></figure></p>
+<p>由于handler是Handler的非静态匿名内部类的实例，所以它持有外部类Activity的引用，我们知道msg队列是在Looper线程中轮流处理msg，那么当这个Activity退出时消息队列中还有未处理的msg或者正在处理msg，而msg<br>队列中的Message持有handler实例的引用，handler又持有Activity的引用，所以导致该Activity的内存资源无法及时回收，引发内存泄漏。<br>解决方案：直接在Activity关闭方法中使用removeCallbacksAndMessages()方法传入null，实际上还可以通过软引用解决问题，但是场合不多见。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span>  </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;  </div><div class="line">    handler.removeCallbacksAndMessages(<span class="keyword">null</span>);  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.属性动画导致的内存泄露<br>当我们在Activity中播放动画时，Activity中的View被动画持有，View又持有Activity,因此即使我们看不到动画效果，Activity依然无法被释放，解决方案也很简单，在onDestry方法中调用animator.cancel()停止动画。</p>
 
       
 
@@ -278,7 +251,7 @@ relativelayout布局（相对布局）：android:layout_above 将该控件的底
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=https://popo1379.github.io/2016/11/06/2016-11-6/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://popo1379.github.io/2017/01/15/2017-1-15/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +265,9 @@ relativelayout布局（相对布局）：android:layout_above 将该控件的底
   
 <nav id="article-nav">
   
-    <a href="/2016/11/16/2016-11-16/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/11/04/2016-11-4/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android开发：RecyclerView实现简单瀑布流效果</div>
+    <a href="/2017/01/12/2017-01-12/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android开发进阶之Activity启动模式探究</div>
       <i class="icon-circle-right"></i>
     </a>
   
