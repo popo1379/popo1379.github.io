@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>popo1379的个人博客</title>
+  <title>View基础知识 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="popo1379的个人博客">
-<meta property="og:url" content="https://popo1379.github.io/page/2/index.html">
+  <meta name="description" content="View是Android中所有控件的基类，是控件的一种抽象，在Android中无论是Button还是ListView甚至常用的RelativeLayout其实都是View。除了View外还有ViewGroup(控件组)，即一组控件，它继承自View，在ViewGroup内部也可以存在View，因此整个关系构成了一个View树。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="View基础知识">
+<meta property="og:url" content="https://popo1379.github.io/2017/01/31/2017-1-31/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
-<meta property="og:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta property="og:description" content="View是Android中所有控件的基类，是控件的一种抽象，在Android中无论是Button还是ListView甚至常用的RelativeLayout其实都是View。除了View外还有ViewGroup(控件组)，即一组控件，它继承自View，在ViewGroup内部也可以存在View，因此整个关系构成了一个View树。">
+<meta property="og:image" content="http://oi1vkg8v3.bkt.clouddn.com/2017-01-31-1.png">
+<meta property="og:image" content="http://oi1vkg8v3.bkt.clouddn.com/2017-01-31-2.png">
+<meta property="og:updated_time" content="2017-01-31T11:22:37.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="popo1379的个人博客">
-<meta name="twitter:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta name="twitter:title" content="View基础知识">
+<meta name="twitter:description" content="View是Android中所有控件的基类，是控件的一种抽象，在Android中无论是Button还是ListView甚至常用的RelativeLayout其实都是View。除了View外还有ViewGroup(控件组)，即一组控件，它继承自View，在ViewGroup内部也可以存在View，因此整个关系构成了一个View树。">
+<meta name="twitter:image" content="http://oi1vkg8v3.bkt.clouddn.com/2017-01-31-1.png">
   
     <link rel="alternative" href="/atom.xml" title="popo1379的个人博客" type="application/atom+xml">
   
@@ -152,33 +156,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2016-11-16" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2017-1-31" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/16/2016-11-16/">开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告</a>
+    <h1 class="article-title" itemprop="name">
+      View基础知识
     </h1>
   
 
         
-        <a href="/2016/11/16/2016-11-16/" class="archive-article-date">
-  	<time datetime="2016-11-16T08:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-16</time>
+        <a href="/2017/01/31/2017-1-31/" class="archive-article-date">
+  	<time datetime="2017-01-31T08:47:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前端时间写APP时候有一个要实现简单新闻功能的需求，其它都好说，到百度API商店找个免费的URL搞到APP里就OK，唯独这个新闻图片不好处理，因为要异步加载，还要涉及到图片尺寸大小等等<br>各种设置，如果自己写代码对于我这个新手可能折腾两周也搞不出来，于是在学长的推荐下开始使用Universal-Image-Loader开源框架，因为只是简单的把图片显示出来，基本没难度，这次写出<br>来，以后有需求再回来看看。<br>一下是大牛们总结的特效：</p>
-<p>1.多线程下载图片，图片可以来源于网络，文件系统，项目文件夹assets中以及drawable中等<br>2.支持随意的配置ImageLoader，例如线程池，图片下载器，内存缓存策略，硬盘缓存策略，图片显示选项以及其他的一些配置<br>3.支持图片的内存缓存，文件系统缓存或者SD卡缓存<br>4.支持图片下载过程的监听<br>5.根据控件(ImageView)的大小对Bitmap进行裁剪，减少Bitmap占用过多的内存<br>6.较好的控制图片的加载过程，例如暂停图片加载，重新开始加载图片，一般使用在ListView,GridView中，滑动过程中暂停加载图片，停止滑动的时候去加载图片<br>7.提供在较慢的网络下对图片进行加载</p>
-        
-          <a class="article-more-a" href="/2016/11/16/2016-11-16/#more">more >></a>
-        
+        <p>View是Android中所有控件的基类，是控件的一种抽象，在Android中无论是Button还是ListView甚至常用的RelativeLayout其实都是View。除了View外还有ViewGroup(控件组)，即一组控件，它继承自View，在ViewGroup内部也可以存在View，因此整个关系构成了一个View树。</p>
+<a id="more"></a>
+<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-31-1.png" alt="1"></p>
+<p>一 View的位置参数<br>View的位置主要由四个顶点来决定，四个顶点分别对应View的四个属性：top、left、right、bottom。<br>left:左上角横坐标<br>top：左上角纵坐标<br>right:右下角横坐标<br>bottom：右下角纵坐标</p>
+<p>因此，我们可以得出View的宽高与坐标的关系：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">width=right-left</div><div class="line">height=bottom-top</div></pre></td></tr></table></figure>
+<p>获取这四个顶点：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">left=getLeft();</div><div class="line"></div><div class="line">right=getRight();</div><div class="line"></div><div class="line">top=getTop();</div><div class="line"></div><div class="line">bottom=getBottom();</div></pre></td></tr></table></figure></p>
+<p>Android3.0之后，View新增了几个参数:x、y、translationX和translationY，xy是View左上角坐标，translationX和translationY是View左上角的相对于父容器的偏移量。<br>几个参数的换算关系如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">x= left + translationX；</div><div class="line"></div><div class="line">y=top +translationY；</div></pre></td></tr></table></figure></p>
+<p><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-01-31-2.png" alt="2"></p>
+<p>这里需要注意的是，View在平移过程中，top和left代表的是原始左上角的位置信息，值不会发生变化，此时发生变化的是x,y,translationX和translationY。</p>
+<p>二 View触摸事件</p>
+<p>在手指接触屏幕后所产生的一系列事件中,典型的事件类型有如下几种:</p>
+<p>ACTION_DOWN  : 手指刚接触屏幕</p>
+<p>ACTION_MOVE   : 手指在屏幕上移动</p>
+<p>ACTION_UP   : 手指离开屏幕的一瞬间</p>
+<p>正常情况下,一次手指触摸屏幕的行为会触发一系列点击事件，例如:</p>
+<p>A. 点击屏幕后离开，事件序列为DOWN-&gt;UP;</p>
+<p>B. 点击屏幕滑动一会松开，事件序列为DOWN-&gt;MOVE-&gt;…-&gt;MOVE-&gt;UP;</p>
+<p>通过MotionEvent对象我们可以获得点击事件发生的x和y坐标，Android提供了两组方法:getX/getY和getRawX/getRawY。getX和getY返回的是相当于当前View左上角的x和y坐标,而getRawX和getRawY返回的是相对于手机屏幕左上角的x和y坐标。</p>
+<p>三 TouchSlop</p>
+<p>TouchSlop是系统所能识别出的滑动的最小距离。当两次滑动距离小于TouchSlop时，默认为不滑动。使用下列方式可以获得最小距离：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ViewConfiguration.get(getContext()).getScaledTouchSlop();</div></pre></td></tr></table></figure></p>
+<p>四 VelocityTracker<br>VelocityTracker是速度追踪，用追踪用户在滑动过程中的速度，包括水平和竖直方向的速度。<br>使用方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">VelocityTracker velocityTracker=VelocityTracker.obtain();</div><div class="line"></div><div class="line">velocityTracker.addMovement(event);</div><div class="line"></div><div class="line">vt.computeurrentVelocity(<span class="number">100</span>);	<span class="comment">//间隔为100ms</span></div><div class="line"></div><div class="line">Int x=(<span class="keyword">int</span>)velocityTracker.getXVelovity();</div><div class="line"></div><div class="line">Int y=(<span class="keyword">int</span>)velocityTracker.getYVelovity();</div><div class="line"></div><div class="line">velocityTracker.clear();		<span class="comment">//关闭方法</span></div><div class="line"></div><div class="line">velocityTracker.recycle();</div></pre></td></tr></table></figure></p>
+<p>五 GestureDetector</p>
+<p>手势检测，用于辅助检测用户的单击，滑动，长按，双击等行为。</p>
+<p>我们创建一个GestureDetector对象并实现onGestureListener接口,根据需要我们还可以实现onDoubleTapListener从而能够监听双击行为:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">GestureDetector mGestureDetector =<span class="keyword">new</span> GestureDetector(<span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="comment">//解决长按屏幕无法拖动的现象</span></div><div class="line"></div><div class="line">mGestureDetector.setIsLongPressEnable(<span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+<p>接管目标View的onTouchEvent方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Boolean consume=mGestureDetector.onTouchEvent(event);</div><div class="line"><span class="keyword">return</span> consume;</div></pre></td></tr></table></figure></p>
+<p>完成上面两步，我们就可以选择OnGestureListener方法，方法如下：</p>
+<p>按下（onDown）： 刚刚手指接触到触摸屏的那一刹那，就是触的那一下。<br>抛掷（onFling）： 手指在触摸屏上迅速移动，并松开的动作。<br>长按（onLongPress）： 手指按在持续一段时间，并且没有松开。<br>滚动（onScroll）： 手指在触摸屏上滑动。<br>按住（onShowPress）： 手指按在触摸屏上，它的时间范围在按下起效，在长按之前。<br>抬起（onSingleTapUp）：手指离开触摸屏的那一刹那。</p>
+
       
 
       
@@ -200,18 +227,74 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/16/2016-11-16/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://popo1379.github.io/2017/01/31/2017-1-31/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/01/20/2017-01-20/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Context笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -219,404 +302,10 @@
 
 
   
-    <article id="post-2016-11-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/06/2016-11-6/">『持续更新』Android Layout：XML各布局常用属性大杂烩</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2016/11/06/2016-11-6/" class="archive-article-date">
-  	<time datetime="2016-11-06T03:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。</p>
-<p>relativelayout布局（相对布局）：<br>android:layout_above 将该控件的底部至于给定ID的控件之上<br>android:layout_below 将该控件的顶部至于给定ID的控件之下<br>android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐<br>android:layout_toRightOf 将该控件的左边缘和给定ID的控件的右边缘对齐</p>
-<p>android:layout_alignBaseline 该控件的baseline和给定ID的控件的baseline对齐<br>android:layout_alignBottom 将该控件的底部边缘与给定ID控件的底部边缘对齐<br>android:layout_alignLeft 将该控件的左边缘与给定ID控件的左边缘对齐<br>android:layout_alignRight 将该控件的右边缘与给定ID控件的右边缘对齐<br>android:layout_alignTop 将给定控件的顶部边缘与给定ID控件的顶部对齐</p>
-        
-          <a class="article-more-a" href="/2016/11/06/2016-11-6/#more">more >></a>
-        
-      
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/06/2016-11-6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-11-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/04/2016-11-4/">Android开发：RecyclerView实现简单瀑布流效果</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/04/2016-11-4/" class="archive-article-date">
-  	<time datetime="2016-11-04T09:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>RecyclerView是谷歌随着Android 5.0推出的全新控件，RecyclerView提供了一种拔插式的体验，相较于它的前代ListView具有低耦合，扩展性强的特点，现在越来越多的开发者放弃listView转而使用RecyclerView，<br>RecyclerView控件也可以实现更多更强大的功能，瀑布流就是其中的一种。</p>
-<p>前段时间想用listview实现一个非常简单电话薄功能，后来发现用瀑布流更美观更显目，完成后把代码发上来，就当一篇加深印象的学习笔记，日后有需求还可以来看看。</p>
-        
-          <a class="article-more-a" href="/2016/11/04/2016-11-4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/04/2016-11-4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-10-27" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/27/2016-10-27/">Android开发之实现带小圆点的ViewPager导航</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/27/2016-10-27/" class="archive-article-date">
-  	<time datetime="2016-10-27T04:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android开发的实际过程中，我们经常需要在APP首页顶部做出一个可以滑动，并有导航功能的图片滑动功能做信息检索，例如网易新闻等APP，<br>相对于其它平台，实现Android的导航功能比较复杂，目前Goolge还没有发布一款官方的控件支持这一功能，不过程序是死的，人是活的，我们依<br>旧可以利用现有控件实现这一功能。</p>
-        
-          <a class="article-more-a" href="/2016/10/27/2016-10-27/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/27/2016-10-27/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-10-22" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/22/2016-10-22/">android开发之JSON数据格式解析实际案例</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/22/2016-10-22/" class="archive-article-date">
-  	<time datetime="2016-10-22T09:00:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JSON百科：JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。JSON采用完全独立于语言<br>的文本格式，但是也使用了类似于C语言家族的习惯（包括C、C++、C#、Java、JavaScript、Perl、Python等）。这些特性使JSON成为理想<br>的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(一般用于提升网络传输速率)。</p>
-<p>在Android开发过程中，我们经常需要和服务器进行数据交互，目前常用的交互格式有两种，XML以及JSON,在android开发中大部分交互都使<br>用JSON，因为JSON具有小，轻，快的特点，适合移动互联网传递数据，本文将用实际开发案例对JSON使用方法进行解析。</p>
-<p>实际上，android平台对JSON是很友好的，google已经提供了相关的API可以让我们轻松提取数据流中的信息。</p>
-<p>Android的JSON解析部分都在包org.json下，主要有以下几个类：<br>JSONObject：可以看作是一个json对象,这是系统中有关JSON定义的基本单元，其包含一对儿(Key/Value)数值。它对外部(External：应用<br>toString()方法输出的数值)调用的响应体现为一个标准的字符串（例如：{“JSON”: “Hello, World”}，最外被大括号包裹，其中的Key和<br>Value被冒号”:”分隔）。其对于内部(Internal)行为的操作格式略微，例如：初始化一个JSONObject实例，引用内部的put()方法添加数值：<br>new JSONObject().put(“JSON”, “Hello, World!”)，在Key和Value之间是以逗号”,”分隔。Value的类型包括：Boolean、JSONArray、JSONObject、<br>Number、String或者默认值JSONObject.NULL object。</p>
-<p>JSONStringer：json文本构建类 ，根据官方的解释，这个类可以帮助快速和便捷的创建JSON text。其最大的优点在于可以减少由于 格式<br>的错误导致程序异常，引用这个类可以自动严格按照JSON语法规则（syntax rules）创建JSON text。每个JSONStringer实体只能对应创建<br>一个JSON text。。其最大的优点在于可以减少由于格式的错误导致程序异常，引用这个类可以自动严格按照JSON语法规则（syntax rules）<br>创建JSON text。每个JSONStringer实体只能对应创建一个JSON text。</p>
-<p>JSONArray：它代表一组有序的数值。将其转换为String输出(toString)所表现的形式是用方括号包裹，数值以逗号”,”分隔（例<br>如：[value1,value2,value3]，大家可以亲自利用简短的代码更加直观的了解其格式）。这个类的内部同样具有查询行为，get()和opt()两种<br>方法都可以通过index索引返回指定的数值，put()方法用来添加或者替换数值。同样这个类的value类型可以包括：Boolean、JSONArray、<br>JSONObject、Number、String或者默认值JSONObject.NULL object。<br>JSONTokener：json解析类<br>JSONException：json中用到的异常</p>
-        
-          <a class="article-more-a" href="/2016/10/22/2016-10-22/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/22/2016-10-22/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-10-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/20/2016-10-20/">初识微信小程序一，了解小程序基础架构</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/20/2016-10-20/" class="archive-article-date">
-  	<time datetime="2016-10-20T05:03:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>距微信小程序公布已经有一个月的时间了，开发工具也已经放出，尽管内测资格有限，但我们依旧可以通过微信小程序开发工具看到微信小程序大体的模样，<br>本文从一个初学者角度，对微信小程序的基础架构进行探究学习。<br>
-        
-          <a class="article-more-a" href="/2016/10/20/2016-10-20/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color1">微信小程序</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/20/2016-10-20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/19/hello-world/" class="archive-article-date">
-  	<time datetime="2016-10-19T03:35:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>  在学长极力推荐下，经过一天一夜的折腾，终于有了自己的一个小博客。</p>
-<p>  尽管许多功能还没有搞懂，但是依然兴奋，甚至彻夜难眠，这是属于我自己的一块小天地，真正由我搭建起来的小站。</p>
-<p>  这种感觉就和小时候第一次用积木搭建小房子的感觉一样满足<br>  甚至让我有了一种归宿感，我想把我的生活上的点点滴滴，技术上学习到的一切都搬到这里，把我在这世上的一切，<br>  都通过一个个字符寄存在这里，这里将成为我永远的乌托邦。</p>
-<p>  我是这的主人，我是popo1379.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color4">新世界</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/19/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -638,8 +327,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
