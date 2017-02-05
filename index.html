@@ -154,6 +154,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-02-05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/05/2017-02-05/">View点击事件分发机制</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/05/2017-02-05/" class="archive-article-date">
+  	<time datetime="2017-02-05T09:51:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>点击事件的分发过程由三个方法构成：</p>
+<p>public boolean dispatchTouchEvent(MotionEvent event)</p>
+<p>用来进行事件分发，如果事件能传递给当前View，此方法将被调用，返回结果受onInterceptTouchEvent()和onTouchEvent()影响。该方法返回结果表示是否消耗当前View事件</p>
+<p>public boolean onInterceptTouchEvent(MotionEvent event)</p>
+<p>在dispatchTouchEvent方法中调用，表示是否拦截该事件。返回结果表示是否拦截该事件</p>
+<p>public boolean onTouchEvent(MotionEvent event)  </p>
+<p>表示处理点击事件，返回结果表示是否消费当前事件。</p>
+        
+          <a class="article-more-a" href="/2017/02/05/2017-02-05/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list">
+			 
+        <li class="article-tag-list-item">
+        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
+        </li>
+      
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/05/2017-02-05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017-1-31" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -732,70 +802,6 @@
 
 
   
-    <article id="post-2016-11-23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/23/2016-11-23/">Android四大组件之Service(服务)基础知识（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2016/11/23/2016-11-23/" class="archive-article-date">
-  	<time datetime="2016-11-23T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Service是Android实现程序后台运行的解决方案，它主要用于在后台处理一些耗时的逻辑，或者去执行某些需要长期运行的任务。服务的最大特点<br>在于它不依赖于任何的用户界面，即使程序被切换到后台甚至在程序退出的情况下，Service依然能够保持正常运行。<br>本文将对Service组件中常用的知识点进行探究，作为学习中的一次笔记，方便日后查看。</p>
-        
-          <a class="article-more-a" href="/2016/11/23/2016-11-23/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/11/23/2016-11-23/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -904,11 +910,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color5">Android开发</a>
+                <a href="javascript:void(0)" class="color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color1">微信小程序</a>
+                <a href="javascript:void(0)" class="color5">Android开发</a>
               </li>
              
               <li class="article-tag-list-item">
