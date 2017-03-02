@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>popo1379的个人博客</title>
+  <title>Archives: 2017/3 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="popo1379的个人博客">
-<meta property="og:url" content="https://popo1379.github.io/index.html">
+<meta property="og:url" content="https://popo1379.github.io/archives/2017/03/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
 <meta property="og:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
 <meta name="twitter:card" content="summary">
@@ -154,38 +154,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2017-03-02" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/2017-03-02/">RXJAVA+Retrofit+MVP框架 网难新闻</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/02/2017-03-02/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/02/2017-03-02/" class="archive-article-date">
   	<time datetime="2017-03-02T06:39:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>寒假期间为了学习MVP框架，在网上找了好多Demo，琢磨了好长时间，MVP框架相比传统的MVC，需要更多的接口和业务类来实现功能，但其解耦性能也更好，提高了代码的可维护性和测试性能，实现了功能模块化，因此如果是需要多人合作的大项目显然MVP框架更适合项目开发</p>
-<p>网难新闻项目思路：启动APP—-&gt;启动NewsFragment—–&gt;触发presenter中的requestNetWork()——-&gt;触发model中的netWorkNewsList()——-&gt;触发Retrofit发出数据请求——–&gt;RXJAVA将返回的数据载入容器中——–&gt;容器传入配适器<br><img src="http://oi1vkg8v3.bkt.clouddn.com/2017-03-02.png" alt="0"></p>
-        
-          <a class="article-more-a" href="/2017/03/02/2017-03-02/#more">more >></a>
-        
-      
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/02/2017-03-02/">RXJAVA+Retrofit+MVP框架 网难新闻</a>
+    </h1>
+  
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
@@ -197,616 +193,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/02/2017-03-02/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
-
-
-
   
-    <article id="post-2017-02-05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/05/2017-02-05/">View点击事件分发机制</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/05/2017-02-05/" class="archive-article-date">
-  	<time datetime="2017-02-05T09:51:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>点击事件的分发过程由三个方法构成：</p>
-<p>public boolean dispatchTouchEvent(MotionEvent event)</p>
-<p>用来进行事件分发，如果事件能传递给当前View，此方法将被调用，返回结果受onInterceptTouchEvent()和onTouchEvent()影响。该方法返回结果表示是否消耗当前View事件</p>
-<p>public boolean onInterceptTouchEvent(MotionEvent event)</p>
-<p>在dispatchTouchEvent方法中调用，表示是否拦截该事件。返回结果表示是否拦截该事件</p>
-<p>public boolean onTouchEvent(MotionEvent event)  </p>
-<p>表示处理点击事件，返回结果表示是否消费当前事件。</p>
-        
-          <a class="article-more-a" href="/2017/02/05/2017-02-05/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/05/2017-02-05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017-1-31" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/31/2017-1-31/">View基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/31/2017-1-31/" class="archive-article-date">
-  	<time datetime="2017-01-31T08:47:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>View是Android中所有控件的基类，是控件的一种抽象，在Android中无论是Button还是ListView甚至常用的RelativeLayout其实都是View。除了View外还有ViewGroup(控件组)，即一组控件，它继承自View，在ViewGroup内部也可以存在View，因此整个关系构成了一个View树。</p>
-        
-          <a class="article-more-a" href="/2017/01/31/2017-1-31/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/31/2017-1-31/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017-01-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/20/2017-01-20/">Context笔记</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/20/2017-01-20/" class="archive-article-date">
-  	<time datetime="2017-01-20T05:53:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Context(场景)是在Android开发中最常用到的核心类，它实现了组件与系统交互的功能，本文是关于Context的一些琐碎学习内容。</p>
-        
-          <a class="article-more-a" href="/2017/01/20/2017-01-20/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/20/2017-01-20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017-1-15" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/15/2017-1-15/">性能优化：内存泄露常见案例及优化方案</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/15/2017-1-15/" class="archive-article-date">
-  	<time datetime="2017-01-15T12:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制<br>使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到了Android平台上，由于手机内存限制，内<br>存泄露所造成的影响更大，因此，解决内存泄露问题是程序员开发过程中必须要面对的问题。<br>如何解决内存泄露，一方面，需要避免在开发过程中写出造成内存泄露的代码逻辑。另一方面，则要通过专门的工具检测潜在的内存泄露并解决问题，在google的AndroidStudio中自带内存检查工具，同时我们也可以使用MAT这类插件排查问题。</p>
-        
-          <a class="article-more-a" href="/2017/01/15/2017-1-15/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/15/2017-1-15/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017-01-12" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/2017-01-12/">Android开发进阶之Activity启动模式探究</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/12/2017-01-12/" class="archive-article-date">
-  	<time datetime="2017-01-12T13:41:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Android运行机制中，当你启动一个Activity时，系统会将这个Activity创建实例并放入任务栈中，不同的启动模式，将决定Activity启动方式的不同以及与任务栈之间的关系，设置一个恰当的启动模式将使用户体验得到质的飞跃。</p>
-        
-          <a class="article-more-a" href="/2017/01/12/2017-01-12/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/12/2017-01-12/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-01-10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/10/2016-01-10/">Android开发进阶：探究Activity生命周期及异常情况分析</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/10/2016-01-10/" class="archive-article-date">
-  	<time datetime="2017-01-10T03:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Activity作为Android四大组件之首，是我们开发使用过程中接触最为频繁的一种组件，Activity承担着与用户交互等最重要的功能，因此这里将全面分析Activity生命周期作为进阶的第一个重要知识。<br>
-        
-          <a class="article-more-a" href="/2017/01/10/2016-01-10/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">Android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/10/2016-01-10/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-12-31" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/31/2016-12-31/">Hello my 2017</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/31/2016-12-31/" class="archive-article-date">
-  	<time datetime="2016-12-31T11:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在写这篇文章的时候，距离2017年还有4小时31分，2016年的进度条即将到达终点，逝去的时间不会重返，未来的生活依旧充满挑战与挫折，想总结这一年来的生活,学习，数年过后，再来看看，看看有没有遗憾，有没有忘记的人，忘记的事。</p>
-<p><img src="http://oi1vkg8v3.bkt.clouddn.com/278324-106.png" alt="0"><br>
-        
-          <a class="article-more-a" href="/2016/12/31/2016-12-31/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/31/2016-12-31/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-12-11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/11/2016-12-11/">Google开发者大会(北京)一日游实记</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/11/2016-12-11/" class="archive-article-date">
-  	<time datetime="2016-12-11T14:26:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>12月8日，Google在时隔5年后再一次在中国举办开发者大会，能参与在Google离开中国后第一次开发者大会，很激动能够见证这次盛会，把在现场的照片发出来，记录下来，留个纪念。<br><img src="http://oi1vkg8v3.bkt.clouddn.com/2016-12-11-0.png" alt="0"></p>
-        
-          <a class="article-more-a" href="/2016/12/11/2016-12-11/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">个人生活</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/11/2016-12-11/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-12-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/02/2016-12-2/">Android SQLite数据库使用指南</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/02/2016-12-2/" class="archive-article-date">
-  	<time datetime="2016-12-02T11:54:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SQLite数据库是一款轻量化的关系型数据库，它具有速度快，占用资源少优点，相对于SharedPrefences,SQLite更适合储存大量复杂的关系型数据。Android中非常贴心的内嵌了SQLite数据库，免去了安装其它框架的麻烦，为本地持久化数据功能的实现提供了可靠的方法。</p>
-        
-          <a class="article-more-a" href="/2016/12/02/2016-12-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
-      
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/02/2016-12-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -828,9 +227,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
