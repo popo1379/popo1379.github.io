@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://popo1379.github.io">
-  <title>Archives: 2016/11 | popo1379的个人博客</title>
+  <title>算法分析笔记：JAVA运行时间复杂度计算 | popo1379的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="popo1379的个人博客">
-<meta property="og:url" content="https://popo1379.github.io/archives/2016/11/index.html">
+  <meta name="description" content="一 数学基础：
+定义：    如果T(N)增长率&amp;lt;=f(N)增长率，则T(N)=O(f(N)) (大O标记)        如果T(N)增长率&amp;gt;=f(N)增长率，则T(N)=Ω(f(N))        如果T(N)增长率=f(N)增长率，则T(N)=Θ(f(N))        如果T(N)增长率&amp;lt;f(N)增长率，则T(N)=o(f(N))">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法分析笔记：JAVA运行时间复杂度计算">
+<meta property="og:url" content="https://popo1379.github.io/2017/03/23/2017-03-23/index.html">
 <meta property="og:site_name" content="popo1379的个人博客">
-<meta property="og:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta property="og:description" content="一 数学基础：
+定义：    如果T(N)增长率&amp;lt;=f(N)增长率，则T(N)=O(f(N)) (大O标记)        如果T(N)增长率&amp;gt;=f(N)增长率，则T(N)=Ω(f(N))        如果T(N)增长率=f(N)增长率，则T(N)=Θ(f(N))        如果T(N)增长率&amp;lt;f(N)增长率，则T(N)=o(f(N))">
+<meta property="og:updated_time" content="2017-03-23T13:49:59.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="popo1379的个人博客">
-<meta name="twitter:description" content="非科班Android自学开发者，目前在研究Native Android以及前端技术中。">
+<meta name="twitter:title" content="算法分析笔记：JAVA运行时间复杂度计算">
+<meta name="twitter:description" content="一 数学基础：
+定义：    如果T(N)增长率&amp;lt;=f(N)增长率，则T(N)=O(f(N)) (大O标记)        如果T(N)增长率&amp;gt;=f(N)增长率，则T(N)=Ω(f(N))        如果T(N)增长率=f(N)增长率，则T(N)=Θ(f(N))        如果T(N)增长率&amp;lt;f(N)增长率，则T(N)=o(f(N))">
   
     <link rel="alternative" href="/atom.xml" title="popo1379的个人博客" type="application/atom+xml">
   
@@ -152,212 +156,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2017-03-23" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/28/2016-11-28/" class="archive-article-date">
-  	<time datetime="2016-11-28T11:43:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/28/2016-11-28/">Android自定义View基础内容学习笔记(一)</a>
+    <h1 class="article-title" itemprop="name">
+      算法分析笔记：JAVA运行时间复杂度计算
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/23/2017-03-23/" class="archive-article-date">
+  	<time datetime="2017-03-23T08:56:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一 数学基础：</p>
+<p>定义：    如果T(N)增长率&lt;=f(N)增长率，则T(N)=O(f(N)) (大O标记)<br>        如果T(N)增长率&gt;=f(N)增长率，则T(N)=Ω(f(N))<br>        如果T(N)增长率=f(N)增长率，则T(N)=Θ(f(N))<br>        如果T(N)增长率&lt;f(N)增长率，则T(N)=o(f(N))</p>
+<a id="more"></a>
+<p>法则1：如果T1(N)=O(f(N))且T2(N)=O(g(N)) 则</p>
+<p> T1(N)+T2(N)=O(f(N)+g(N))<br> T1(N)<em>T2(N)=O(f(N)</em>g(N))</p>
+<p>法则2：      如果T(N)是一个K次多项式，T(N)=Θ(N^K)</p>
+<p>法则3：      对于任意的常数k,(logN)^k = O(N)</p>
+<p>法则4：      常数项或低阶项不要放入O（）中。</p>
+<p>二：运行时间复杂度计算</p>
+<p>1.for循环<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</div><div class="line">k++ ;</div><div class="line">            <span class="comment">//这里运行次数为N次,时间为O(N)</span></div></pre></td></tr></table></figure></p>
+<p>2.嵌套for循环<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</div><div class="line"><span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;N;j++)</div><div class="line">  k++ ;     <span class="comment">//这里运行次数为N次,时间为O(N)</span></div></pre></td></tr></table></figure></p>
+<p>3.顺序语句<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</div><div class="line">k++ ;</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</div><div class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;j&lt;N;j++)</div><div class="line">  Z++ ;  </div><div class="line">         <span class="comment">//按顺序将for循环运行复杂度依次相加，O(N)+O(N^2),总量为O(N^2)</span></div></pre></td></tr></table></figure></p>
+<p>3.if/else</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)</div><div class="line">S1</div><div class="line"><span class="keyword">else</span></div><div class="line">S2 <span class="comment">//运行时间不超过S1和S2运行时间长者的总运行时间</span></div></pre></td></tr></table></figure>
+<p>三：关于多重复杂for的复杂度计算<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i &lt;=n;i++)</div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j &lt;=i;j++)</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k &lt;=j;k++)</div><div class="line">     Z++;</div></pre></td></tr></table></figure></p>
+<p>计算过程：<br>1.先从最内层开始计算，Z++复杂度为1<br>2.最内层循环：j次<br>3.第二次循环：i*(1+i)/2<br>4.最外层循环: n (n + 1) (n + 2)/6=O(N^3)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list">
 			 
         <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
+        	<a href="javascript:void(0)" class="article-tag-list-link color5">CS基础</a>
         </li>
       
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/23/2016-11-23/" class="archive-article-date">
-  	<time datetime="2016-11-23T13:28:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/23/2016-11-23/">Android四大组件之Service(服务)基础知识（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/16/2016-11-16/" class="archive-article-date">
-  	<time datetime="2016-11-16T08:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/16/2016-11-16/">开发实录：Android异步加载图片神器Universal-Image-Loader开源框架初次使用报告</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
       
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/06/2016-11-6/" class="archive-article-date">
-  	<time datetime="2016-11-06T03:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/06/2016-11-6/">『持续更新』Android Layout：XML各布局常用属性大杂烩</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
       
-		</ul>
-	</div>
-
-          
-
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/04/2016-11-4/" class="archive-article-date">
-  	<time datetime="2016-11-04T09:46:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/04/2016-11-4/">Android开发：RecyclerView实现简单瀑布流效果</a>
-    </h1>
-  
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list">
-			 
-        <li class="article-tag-list-item">
-        	<a href="javascript:void(0)" class="article-tag-list-link color5">android开发</a>
-        </li>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://popo1379.github.io/2017/03/23/2017-03-23/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/03/02/2017-03-02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RXJAVA+Retrofit+MVP框架 网难新闻</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -380,8 +315,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
