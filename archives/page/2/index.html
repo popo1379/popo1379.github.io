@@ -190,6 +190,26 @@ classes that you can use:
     <li>
 
       <h2 class="post-list__post-title post-title">
+        <a href="/2017/01/15/2017-1-15/" title="link to 性能优化：内存泄露常见案例及优化方案">性能优化：内存泄露常见案例及优化方案</a>
+      </h2>
+
+      <div class="post-list__meta">
+
+        <time datetime="2017-01-15" class="post-list__meta--date date">2017-01-15</time> 
+      </div>
+
+      <div class="excerpt">
+        
+          <p>内存泄露，是指对象不再使用但无法回收造成的内存无法释放造成大量被占用现象，在所有的软件开发中，都有内存泄露现象，众所周知，JAVA拥有自己的内存回收机制：当对象不再调用后系统自动回收，相较于C++等语言，JAVA这一机制<br>使得开发工作更为容易，开发者能将精力更多的放在实现代码逻辑上，但实际上JAVA中也有许多情况会造成对象无法回收，由于JAVA的特性这一现象更容易被程序员忽略，于是造成了内存泄露，到了Android平台上，由于手机内存限制，内<br>存泄露所造成的影响更大，因此，解决内存泄露问题是程序员开发过程中必须要面对的问题。<br>如何解决内存泄露，一方面，需要避免在开发过程中写出造成内存泄露的代码逻辑。另一方面，则要通过专门的工具检测潜在的内存泄露并解决问题，在google的AndroidStudio中自带内存检查工具，同时我们也可以使用MAT这类插件排查问题。</p>
+        
+      </div>
+
+      <hr class="post-list__divider" />
+    </li>
+    
+    <li>
+
+      <h2 class="post-list__post-title post-title">
         <a href="/2017/01/12/2017-01-12/" title="link to Android开发进阶之Activity启动模式探究">Android开发进阶之Activity启动模式探究</a>
       </h2>
 
@@ -366,27 +386,6 @@ classes that you can use:
           <p>本文结合网上大牛们的资料，记录在Android开发中各个布局的常用属性，增强记忆，日后忘记了还能看看。</p>
 <p>relativelayout布局（相对布局）：<br>android:layout_above 将该控件的底部至于给定ID的控件之上<br>android:layout_below 将该控件的顶部至于给定ID的控件之下<br>android:layout_toLeftOf 将该控件的右边缘和给定ID的控件的左边缘对齐<br>android:layout_toRightOf 将该控件的左边缘和给定ID的控件的右边缘对齐</p>
 <p>android:layout_alignBaseline 该控件的baseline和给定ID的控件的baseline对齐<br>android:layout_alignBottom 将该控件的底部边缘与给定ID控件的底部边缘对齐<br>android:layout_alignLeft 将该控件的左边缘与给定ID控件的左边缘对齐<br>android:layout_alignRight 将该控件的右边缘与给定ID控件的右边缘对齐<br>android:layout_alignTop 将给定控件的顶部边缘与给定ID控件的顶部对齐</p>
-        
-      </div>
-
-      <hr class="post-list__divider" />
-    </li>
-    
-    <li>
-
-      <h2 class="post-list__post-title post-title">
-        <a href="/2016/11/04/2016-11-4/" title="link to Android开发：RecyclerView实现简单瀑布流效果">Android开发：RecyclerView实现简单瀑布流效果</a>
-      </h2>
-
-      <div class="post-list__meta">
-
-        <time datetime="2016-11-04" class="post-list__meta--date date">2016-11-04</time> 
-      </div>
-
-      <div class="excerpt">
-        
-          <p>RecyclerView是谷歌随着Android 5.0推出的全新控件，RecyclerView提供了一种拔插式的体验，相较于它的前代ListView具有低耦合，扩展性强的特点，现在越来越多的开发者放弃listView转而使用RecyclerView，<br>RecyclerView控件也可以实现更多更强大的功能，瀑布流就是其中的一种。</p>
-<p>前段时间想用listview实现一个非常简单电话薄功能，后来发现用瀑布流更美观更显目，完成后把代码发上来，就当一篇加深印象的学习笔记，日后有需求还可以来看看。</p>
         
       </div>
 
